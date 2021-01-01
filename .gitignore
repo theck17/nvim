@@ -36,7 +36,7 @@
 view/
 plugged/
 sessions/
-autoload/plug.vim.old
+autoload/plug.vim
 tmp/
 .netrwhist
 _machine_specific.vim
