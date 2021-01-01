@@ -445,15 +445,17 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'bling/vim-bufferline'
 
 " Status line 状态栏
-Plug 'theniceboy/eleline.vim'
-Plug 'ojroques/vim-scrollstatus'
+" Plug 'theniceboy/eleline.vim'
+" Plug 'ojroques/vim-scrollstatus'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " General Highlighter 用于异步显示文件中的颜色
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
 " File navigation 文件目录
-"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -573,6 +575,7 @@ Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'machakann/vim-highlightedyank' " 高亮显示复制内容
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
@@ -605,14 +608,15 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'wincent/terminus'
 
 " Other useful utilities
-Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
+" Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'makerj/vim-pdf'
 " Plug 'xolox/vim-session'
 " Plug 'xolox/vim-misc' " vim-session dep
 " Other useful utilities
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'ntpeters/vim-better-whitespace', { 'on': ['EnableWhitespace', 'ToggleWhitespace'] } "displays trailing whitespace (after :EnableWhitespace, vim slows down)
-" Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+
 
 " Dependencies
 " Plug 'MarcWeber/vim-addon-mw-utils'
@@ -668,122 +672,123 @@ hi NonText ctermfg=gray guifg=grey10
 " === eleline.vim 状态栏
 " ===
 let g:airline_powerline_fonts = 0
+" let g:airline_theme='<theme>' " <theme> 代表某个主题的名称
 
 " ==
 " == GitGutter
 " ==
 " let g:gitgutter_signs = 0
-let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_map_keys = 0
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_preview_win_floating = 1
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▒'
+" let g:gitgutter_sign_allow_clobber = 0
+" let g:gitgutter_map_keys = 0
+" let g:gitgutter_override_sign_column_highlight = 0
+" let g:gitgutter_preview_win_floating = 1
+" let g:gitgutter_sign_added = '▎'
+" let g:gitgutter_sign_modified = '░'
+" let g:gitgutter_sign_removed = '▏'
+" let g:gitgutter_sign_removed_first_line = '▔'
+" let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
-nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
-nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+" nnoremap <LEADER>gf :GitGutterFold<CR>
+" nnoremap H :GitGutterPreviewHunk<CR>
+" nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+" nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
 " ===
 " === coc.nvim
 " ===
-let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-diagnostic',
-	\ 'coc-explorer',
-	\ 'coc-flutter-tools',
-	\ 'coc-gitignore',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-prettier',
-	\ 'coc-pyright',
-	\ 'coc-python',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-stylelint',
-	\ 'coc-syntax',
-	\ 'coc-tasks',
-	\ 'coc-translator',
-	\ 'coc-tslint-plugin',
-	\ 'coc-tsserver',
-	\ 'coc-vetur',
-	\ 'coc-vimlsp',
-	\ 'coc-yaml',
-	\ 'coc-yank']
-inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <c-o> coc#refresh()
-function! Show_documentation()
-	call CocActionAsync('highlight')
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
-nnoremap <LEADER>h :call Show_documentation()<CR>
+" let g:coc_global_extensions = [
+"	\ 'coc-css',
+"	\ 'coc-diagnostic',
+"	\ 'coc-explorer',
+"	\ 'coc-flutter-tools',
+"	\ 'coc-gitignore',
+"	\ 'coc-html',
+"	\ 'coc-json',
+"	\ 'coc-lists',
+"	\ 'coc-prettier',
+"	\ 'coc-pyright',
+"	\ 'coc-python',
+"	\ 'coc-snippets',
+"	\ 'coc-sourcekit',
+"	\ 'coc-stylelint',
+"	\ 'coc-syntax',
+"	\ 'coc-tasks',
+"	\ 'coc-translator',
+"	\ 'coc-tslint-plugin',
+"	\ 'coc-tsserver',
+"	\ 'coc-vetur',
+"	\ 'coc-vimlsp',
+"	\ 'coc-yaml',
+"	\ 'coc-yank']
+" inoremap <silent><expr> <TAB>
+"	\ pumvisible() ? "\<C-n>" :
+"	\ <SID>check_back_space() ? "\<TAB>" :
+"	\ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" function! s:check_back_space() abort
+"	let col = col('.') - 1
+"	return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+" inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-o> coc#refresh()
+" function! Show_documentation()
+"	call CocActionAsync('highlight')
+"	if (index(['vim','help'], &filetype) >= 0)
+"		execute 'h '.expand('<cword>')
+"	else
+"		call CocAction('doHover')
+" 	endif
+" endfunction
+" nnoremap <LEADER>h :call Show_documentation()<CR>
 " set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
 " let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
 " let $NVIM_COC_LOG_LEVEL = 'debug'
 " let $NVIM_COC_LOG_FILE = '~/.config/nvim/log.txt'
 
-nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
-nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
-nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-nnoremap <c-c> :CocCommand<CR>
+" nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
+" nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
+" nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
+" nnoremap <c-c> :CocCommand<CR>
 " Text Objects
-xmap kf <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap kf <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-xmap kc <Plug>(coc-classobj-i)
-omap kc <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
+" xmap kf <Plug>(coc-funcobj-i)
+" xmap af <Plug>(coc-funcobj-a)
+" omap kf <Plug>(coc-funcobj-i)
+" omap af <Plug>(coc-funcobj-a)
+" xmap kc <Plug>(coc-classobj-i)
+" omap kc <Plug>(coc-classobj-i)
+" xmap ac <Plug>(coc-classobj-a)
+" omap ac <Plug>(coc-classobj-a)
 " Useful commands
-nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+" nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nmap tt :CocCommand explorer<CR>
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <leader>rn <Plug>(coc-rename)
+" nmap tt :CocCommand explorer<CR>
 " coc-translator
-nmap ts <Plug>(coc-translator-p)
+" nmap ts <Plug>(coc-translator-p)
 " Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>aw  <Plug>(coc-codeaction-selected)w
+" function! s:cocActionsOpenFromSelected(type) abort
+"   execute 'CocCommand actions.open ' . a:type
+" endfunction
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " coctodolist
 " nnoremap <leader>tn :CocCommand todolist.create<CR>
 " nnoremap <leader>tl :CocList todolist<CR>
 " nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
-noremap <silent> <leader>ts :CocList tasks<CR>
+" noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-e>'
-let g:coc_snippet_prev = '<c-n>'
-imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David Chen'
-autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+" imap <C-l> <Plug>(coc-snippets-expand)
+" vmap <C-e> <Plug>(coc-snippets-select)
+" let g:coc_snippet_next = '<c-e>'
+" let g:coc_snippet_prev = '<c-n>'
+" imap <C-e> <Plug>(coc-snippets-expand-jump)
+" let g:snips_author = 'David Chen'
+" autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
 " ===
