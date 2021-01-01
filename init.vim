@@ -428,17 +428,17 @@ call plug#begin('~/.vim/plugged')
 " Plug 'theniceboy/vim-calc'
 
 " Treesitter 比默认高亮好一些
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground'
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/playground'
 
 " Pretty Dress vim语法高亮显示
 " neovim
 Plug 'bpietravalle/vim-bolt'
-Plug 'theniceboy/nvim-deus'
-"Plug 'arzg/vim-colors-xcode'
+" Plug 'theniceboy/nvim-deus'
+" Plug 'arzg/vim-colors-xcode'
 " macvim
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'connorholyday/vim-snazzy'
 "Plug 'NLKNguyen/papercolor-theme'
 "Plug 'ayu-theme/ayu-vim'
