@@ -212,7 +212,7 @@ map t- :+tabenext<CR>
 " === Markdown Settings
 " ===
 " Snippets
-source ～/.config/nvim/md-snippets.vim
+source ~/.config/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -477,7 +477,7 @@ Plug 'wellle/tmux-complete.vim'
 
 " Snippets 代码片段
 " Plug ‘honza/vim-snippets’
-" Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips's
 Plug 'theniceboy/vim-snippets'
 
 " Undo Tree 可视化撤消历史记录
@@ -485,7 +485,7 @@ Plug 'mbbill/undotree'
 
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+"Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
