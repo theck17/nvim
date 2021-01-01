@@ -104,7 +104,7 @@ set guioptions-=r               "隐藏右侧滚动条"
 set guioptions-=L               "隐藏左侧滚动条"
 set guioptions-=b               "隐藏底部滚动条"
 set langmenu=zh_CN.UTF-8        "显示中文菜单
-set fileformat=unix             "设置以unix的格式保存文件:
+" set fileformat=unix             "设置以unix的格式保存文件:
 set cindent                     "设置C样式的缩进格式"
 set backspace+=indent,eol,start "set backspace&可以对其重置
 set showmatch                   "显示匹配的括号"
@@ -789,21 +789,21 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 " ===
 " === vim-instant-markdown
 " ===
-let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
+" let g:instant_markdown_slow = 0
+" let g:instant_markdown_autostart = 0
 " let g:instant_markdown_open_to_the_world = 1
 " let g:instant_markdown_allow_unsafe_content = 1
 " let g:instant_markdown_allow_external_content = 0
 " let g:instant_markdown_mathjax = 1
-let g:instant_markdown_autoscroll = 1
+" let g:instant_markdown_autoscroll = 1
 
 
 " ===
 " === vim-table-mode
 " ===
-noremap <LEADER>tm :TableModeToggle<CR>
-"let g:table_mode_disable_mappings = 1
-let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+" noremap <LEADER>tm :TableModeToggle<CR>
+" let g:table_mode_disable_mappings = 1
+" let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 
 
 " ===
@@ -841,7 +841,7 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 "  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 "\ }))
 
-"noremap <c-d> :BD<CR>
+" noremap <c-d> :BD<CR>
 
 "let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
@@ -904,19 +904,19 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
-let g:undotree_DiffAutoOpen = 1
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_ShortIndicators = 1
-let g:undotree_WindowLayout = 2
-let g:undotree_DiffpanelHeight = 8
-let g:undotree_SplitWidth = 24
-function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
-endfunc
+" noremap L :UndotreeToggle<CR>
+" let g:undotree_DiffAutoOpen = 1
+" let g:undotree_SetFocusWhenToggle = 1
+" let g:undotree_ShortIndicators = 1
+" let g:undotree_WindowLayout = 2
+" let g:undotree_DiffpanelHeight = 8
+" let g:undotree_SplitWidth = 24
+" function g:Undotree_CustomMap()
+"	nmap <buffer> u <plug>UndotreeNextState
+"	nmap <buffer> e <plug>UndotreePreviousState
+"	nmap <buffer> U 5<plug>UndotreeNextState
+"	nmap <buffer> E 5<plug>UndotreePreviousState
+" endfunc
 
 
 " ==
@@ -936,79 +936,79 @@ endfunc
 " ===
 " === vim-visual-multi 多光标
 " ===
-"let g:VM_theme             = 'iceblue'
-"let g:VM_default_mappings = 0
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
-let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']          = ''
-let g:VM_maps['Find Prev']          = ''
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-n>'
-let g:VM_maps["Undo"]               = 'l'
-let g:VM_maps["Redo"]               = '<C-r>'
+" let g:VM_theme             = 'iceblue'
+" let g:VM_default_mappings = 0
+" let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+" let g:VM_maps                       = {}
+" let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+" let g:VM_maps['i']                  = 'k'
+" let g:VM_maps['I']                  = 'K'
+" let g:VM_maps['Find Under']         = '<C-k>'
+" let g:VM_maps['Find Subword Under'] = '<C-k>'
+" let g:VM_maps['Find Next']          = ''
+" let g:VM_maps['Find Prev']          = ''
+" let g:VM_maps['Remove Region']      = 'q'
+" let g:VM_maps['Skip Region']        = '<c-n>'
+" let g:VM_maps["Undo"]               = 'l'
+" let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+" noremap <LEADER>f :F  **/*<left><left><left><left><left>
+" let g:far#mapping = {
+"		\ "replace_undo" : ["l"],
+"		\ }
 
 
 " ===
 " === vim-calc
 " ===
-"noremap <LEADER>a :call Calc()<CR>
+" noremap <LEADER>a :call Calc()<CR>
 " Testing
-"if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
-"source ~/Github/vim-calc/vim-calc.vim
-"endif
+" if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
+" source ~/Github/vim-calc/vim-calc.vim
+" endif
 
 
 " ===
 " === Bullets.vim
 " ===
 " let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
-			\ 'markdown',
-			\ 'text',
-			\ 'gitcommit',
-			\ 'scratch'
-			\]
+" let g:bullets_enabled_file_types = [
+"			\ 'markdown',
+"			\ 'text',
+"			\ 'gitcommit',
+"			\ 'scratch'
+"			\]
 
 
 " ===
 " === Vista.vim
 " ===
-noremap <LEADER>v :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+" noremap <LEADER>v :Vista!!<CR>
+" noremap <c-t> :silent! Vista finder coc<CR>
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_default_executive = 'coc'
+" let g:vista_fzf_preview = ['right:50%']
+" let g:vista#renderer#enable_icon = 1
+" let g:vista#renderer#icons = {
+" \   "function": "\uf794",
+" \   "variable": "\uf71b",
+" \  }
 " function! NearestMethodOrFunction() abort
 " 	return get(b:, 'vista_nearest_method_or_function', '')
 " endfunction
 " set statusline+=%{NearestMethodOrFunction()}
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
-let g:scrollstatus_size = 15
+" let g:scrollstatus_size = 15
 
 " ===
 " === fzf-gitignore
 " ===
-noremap <LEADER>gi :FzfGitignore<CR>
+" noremap <LEADER>gi :FzfGitignore<CR>
 
 
 " ===
@@ -1032,163 +1032,163 @@ noremap <LEADER>gi :FzfGitignore<CR>
 " ===
 " === vimtex
 " ===
-"let g:vimtex_view_method = ''
-let g:vimtex_view_general_viewer = 'llpp'
-let g:vimtex_mappings_enabled = 0
-let g:vimtex_text_obj_enabled = 0
-let g:vimtex_motion_enabled = 0
-let maplocalleader=' '
+" let g:vimtex_view_method = ''
+" let g:vimtex_view_general_viewer = 'llpp'
+" let g:vimtex_mappings_enabled = 0
+" let g:vimtex_text_obj_enabled = 0
+" let g:vimtex_motion_enabled = 0
+" let maplocalleader=' '
 
 
 " ===
 " === vim-calendar
 " ===
-"noremap \c :Calendar -position=here<CR>
-noremap \\ :Calendar -view=clock -position=here<CR>
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-augroup calendar-mappings
-	autocmd!
+" noremap \c :Calendar -position=here<CR>
+" noremap \\ :Calendar -view=clock -position=here<CR>
+" let g:calendar_google_calendar = 1
+" let g:calendar_google_task = 1
+" augroup calendar-mappings
+"	autocmd!
 	" diamond cursor
-	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
-	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
-	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
-	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
-	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
-	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
-	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
-	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
-	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
-	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
-	" unmap <C-n>, <C-p> for other plugins
-	autocmd FileType calendar nunmap <buffer> <C-n>
-	autocmd FileType calendar nunmap <buffer> <C-p>
-augroup END
+"	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+"	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+"	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+"	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+"	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
+"	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
+"	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
+"	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
+"	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+"	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+"	" unmap <C-n>, <C-p> for other plugins
+"	autocmd FileType calendar nunmap <buffer> <C-n>
+"	autocmd FileType calendar nunmap <buffer> <C-p>
+" augroup END
 
 
 " ===
 " === vim-go
 " ===
-let g:go_echo_go_info = 0
-let g:go_doc_popup_window = 1
-let g:go_def_mapping_enabled = 0
-let g:go_template_autocreate = 0
-let g:go_textobj_enabled = 0
-let g:go_auto_type_info = 1
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_types = 1
-let g:go_highlight_variable_assignments = 0
-let g:go_highlight_variable_declarations = 0
-let g:go_doc_keywordprg_enabled = 0
+" let g:go_echo_go_info = 0
+" let g:go_doc_popup_window = 1
+" let g:go_def_mapping_enabled = 0
+" let g:go_template_autocreate = 0
+" let g:go_textobj_enabled = 0
+" let g:go_auto_type_info = 1
+" let g:go_def_mapping_enabled = 0
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_format_strings = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_function_parameters = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_string_spellcheck = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_variable_assignments = 0
+" let g:go_highlight_variable_declarations = 0
+" let g:go_doc_keywordprg_enabled = 0
 
 
 " ===
 " === AutoFormat
 " ===
-augroup autoformat_settings
+" augroup autoformat_settings
 	" autocmd FileType bzl AutoFormatBuffer buildifier
 	" autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
 	" autocmd FileType dart AutoFormatBuffer dartfmt
 	" autocmd FileType go AutoFormatBuffer gofmt
 	" autocmd FileType gn AutoFormatBuffer gn
 	" autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-	autocmd FileType java AutoFormatBuffer google-java-format
+	" autocmd FileType java AutoFormatBuffer google-java-format
 	" autocmd FileType python AutoFormatBuffer yapf
 	" Alternative: autocmd FileType python AutoFormatBuffer autopep8
 	" autocmd FileType rust AutoFormatBuffer rustfmt
 	" autocmd FileType vue AutoFormatBuffer prettier
-augroup END
+" augroup END
 
 
 " ===
 " === OmniSharp
 " ===
-let g:OmniSharp_typeLookupInPreview = 1
-let g:omnicomplete_fetch_full_documentation = 1
+" let g:OmniSharp_typeLookupInPreview = 1
+" let g:omnicomplete_fetch_full_documentation = 1
 
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_selector_ui = 'ctrlp'
+" let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_highlight_types = 2
+" let g:OmniSharp_selector_ui = 'ctrlp'
 
-autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
-autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
-autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
-autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
-autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
+" autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
+" autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
+" autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
+" autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
+" autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
 
-sign define OmniSharpCodeActions text=💡
+" sign define OmniSharpCodeActions text=💡
 
-augroup OSCountCodeActions
-	autocmd!
-	autocmd FileType cs set signcolumn=yes
-	autocmd CursorHold *.cs call OSCountCodeActions()
-augroup END
+" augroup OSCountCodeActions
+"	autocmd!
+"	autocmd FileType cs set signcolumn=yes
+"	autocmd CursorHold *.cs call OSCountCodeActions()
+" augroup END
 
-function! OSCountCodeActions() abort
-	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
-	if !OmniSharp#IsServerRunning() | return | endif
-	let opts = {
-				\ 'CallbackCount': function('s:CBReturnCount'),
-				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
-				\}
-	call OmniSharp#CountCodeActions(opts)
-endfunction
+" function! OSCountCodeActions() abort
+"	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+"	if !OmniSharp#IsServerRunning() | return | endif
+"	let opts = {
+"				\ 'CallbackCount': function('s:CBReturnCount'),
+"				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
+"				\}
+"	call OmniSharp#CountCodeActions(opts)
+" endfunction
 
-function! s:CBReturnCount(count) abort
-	if a:count
-		let l = getpos('.')[1]
-		let f = expand('%:p')
-		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
-	endif
-endfunction
+" function! s:CBReturnCount(count) abort
+"	if a:count
+"		let l = getpos('.')[1]
+"		let f = expand('%:p')
+" 		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+" 	endif
+" endfunction
 
 
 " ===
 " === vim-easymotion
 " ===
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_do_shade = 0
-let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_do_mapping = 0
+" let g:EasyMotion_do_shade = 0
+" let g:EasyMotion_smartcase = 1
 " map ' <Plug>(easymotion-overwin-f2)
 " nmap ' <Plug>(easymotion-overwin-f2)
-"map E <Plug>(easymotion-j)
-"map U <Plug>(easymotion-k)
-"nmap f <Plug>(easymotion-overwin-f)
-"map \; <Plug>(easymotion-prefix)
-"nmap ' <Plug>(easymotion-overwin-f2)
-"map 'l <Plug>(easymotion-bd-jk)
-"nmap 'l <Plug>(easymotion-overwin-line)
-"map  'w <Plug>(easymotion-bd-w)
-"nmap 'w <Plug>(easymotion-overwin-w)
+" map E <Plug>(easymotion-j)
+" map U <Plug>(easymotion-k)
+" nmap f <Plug>(easymotion-overwin-f)
+" map \; <Plug>(easymotion-prefix)
+" nmap ' <Plug>(easymotion-overwin-f2)
+" map 'l <Plug>(easymotion-bd-jk)
+" nmap 'l <Plug>(easymotion-overwin-line)
+" map  'w <Plug>(easymotion-bd-w)
+" nmap 'w <Plug>(easymotion-overwin-w)
 
 
 " ===
 " === goyo
 " ===
-map <LEADER>gy :Goyo<CR>
+" map <LEADER>gy :Goyo<CR>
 
 
 " ===
 " === jsx
 " ===
-let g:vim_jsx_pretty_colorful_config = 1
+" let g:vim_jsx_pretty_colorful_config = 1
 
 
 " ===
@@ -1215,49 +1215,49 @@ let g:vim_jsx_pretty_colorful_config = 1
 " ===
 " === tabular
 " ===
-vmap ga :Tabularize /
+" vmap ga :Tabularize /
 
 
 " ===
 " === vim-after-object
 " ===
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+" autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 
 
 " ===
 " === rainbow
 " ===
-let g:rainbow_active = 1
+" let g:rainbow_active = 1
 
 
 " ===
 " === xtabline
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
-noremap to :XTabCycleMode<CR>
-noremap \p :echo expand('%:p')<CR>
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.last_open_first = 1
+" noremap to :XTabCycleMode<CR>
+" noremap \p :echo expand('%:p')<CR>
 
 
 " ===
 " === vim-session
 " ===
-"let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
-"let g:session_autosave = 'no'
-"let g:session_autoload = 'no'
-"let g:session_command_aliases = 1
-"set sessionoptions-=buffers
-"set sessionoptions-=options
-"noremap sl :OpenSession<CR>
-"noremap sS :SaveSession<CR>
-"noremap ss :SaveSession 
-"noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
-"noremap so :OpenSession default<CR>
-"noremap sD :DeleteSession<CR>
-""noremap sA :AppendTabSession<CR>
+" let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
+" let g:session_autosave = 'no'
+" let g:session_autoload = 'no'
+" let g:session_command_aliases = 1
+" set sessionoptions-=buffers
+" set sessionoptions-=options
+" noremap sl :OpenSession<CR>
+" noremap sS :SaveSession<CR>
+" noremap ss :SaveSession 
+" noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
+" noremap so :OpenSession default<CR>
+" noremap sD :DeleteSession<CR>
+" noremap sA :AppendTabSession<CR>
 
 
 " ===
@@ -1270,177 +1270,177 @@ noremap \p :echo expand('%:p')<CR>
 " ===
 " === suda.vim
 " ===
-cnoreabbrev sudowrite w suda://%
-cnoreabbrev sw w suda://%
+" cnoreabbrev sudowrite w suda://%
+" cnoreabbrev sw w suda://%
 
 
 " ===
 " === vimspector
 " ===
-let g:vimspector_enable_mappings = 'HUMAN'
-function! s:read_template_into_buffer(template)
-	" has to be a function to avoid the extra space fzf#run insers otherwise
-	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
-endfunction
-command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-			\   'down': 20,
-			\   'sink': function('<sid>read_template_into_buffer')
-			\ })
+" let g:vimspector_enable_mappings = 'HUMAN'
+" function! s:read_template_into_buffer(template)
+" 	" has to be a function to avoid the extra space fzf#run insers otherwise
+" 	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+" endfunction
+" command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+" 			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+" 			\   'down': 20,
+"			\   'sink': function('<sid>read_template_into_buffer')
+"			\ })
 " noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-sign define vimspectorBP text=☛ texthl=Normal
-sign define vimspectorBPDisabled text=☞ texthl=Normal
-sign define vimspectorPC text=🔶 texthl=SpellBad
+" sign define vimspectorBP text=☛ texthl=Normal
+" sign define vimspectorBPDisabled text=☞ texthl=Normal
+" sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
 " ===
 " === reply.vim
 " ===
-"noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
-"noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
-"noremap <LEADER>rt :ReplStop<CR>
+" noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
+" noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
+" noremap <LEADER>rt :ReplStop<CR>
 
 
 " ===
 " === vim-markdown-toc
 " ===
-"let g:vmt_auto_update_on_save = 0
-"let g:vmt_dont_insert_fence = 1
-let g:vmt_cycle_list_item_markers = 1
-let g:vmt_fence_text = 'TOC'
-let g:vmt_fence_closing_text = '/TOC'
+" let g:vmt_auto_update_on_save = 0
+" let g:vmt_dont_insert_fence = 1
+" let g:vmt_cycle_list_item_markers = 1
+" let g:vmt_fence_text = 'TOC'
+" let g:vmt_fence_closing_text = '/TOC'
 
 
 " ===
 " === rnvimr
 " ===
-let g:rnvimr_ex_enable = 1
-let g:rnvimr_pick_enable = 1
-let g:rnvimr_draw_border = 0
+" let g:rnvimr_ex_enable = 1
+" let g:rnvimr_pick_enable = 1
+" let g:rnvimr_draw_border = 0
 " let g:rnvimr_bw_enable = 1
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
-let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+" highlight link RnvimrNormal CursorLine
+" nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+" let g:rnvimr_action = {
+"             \ '<C-t>': 'NvimEdit tabedit',
+"             \ '<C-x>': 'NvimEdit split',
+"             \ '<C-v>': 'NvimEdit vsplit',
+"             \ 'gw': 'JumpNvimCwd',
+"             \ 'yw': 'EmitRangerCwd'
+"             \ }
+" let g:rnvimr_layout = { 'relative': 'editor',
+"             \ 'width': &columns,
+"             \ 'height': &lines,
+"             \ 'col': 0,
+"             \ 'row': 0,
+"            \ 'style': 'minimal' }
+" let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
 " ===
 " === vim-subversive
 " ===
-nmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
+" nmap s <plug>(SubversiveSubstitute)
+" nmap ss <plug>(SubversiveSubstituteLine)
 
 
 " ===
 " === vim-illuminate
 " ===
-let g:Illuminate_delay = 750
-hi illuminatedWord cterm=undercurl gui=undercurl
+" let g:Illuminate_delay = 750
+" hi illuminatedWord cterm=undercurl gui=undercurl
 
 
 " ===
 " === vim-rooter
 " ===
-let g:rooter_patterns = ['__vim_project_root', '.git/']
-let g:rooter_silent_chdir = 1
+" let g:rooter_patterns = ['__vim_project_root', '.git/']
+" let g:rooter_silent_chdir = 1
 
 
 " ===
 " === AsyncRun
 " ===
-noremap gp :AsyncRun git push<CR>
+" noremap gp :AsyncRun git push<CR>
 
 
 " ===
 " === AsyncTasks
 " ===
-let g:asyncrun_open = 6
+" let g:asyncrun_open = 6
 
 
 " ===
 " === dart-vim-plugin
 " ===
-let g:dart_style_guide = 2
-let g:dart_format_on_save = 1
-let g:dartfmt_options = ["-l 100"]
+" let g:dart_style_guide = 2
+" let g:dart_format_on_save = 1
+" let g:dartfmt_options = ["-l 100"]
 
 
 " ===
 " === tcomment_vim
 " ===
-nnoremap ci cl
-let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>cn g>c
-vmap <LEADER>cn g>
-nmap <LEADER>cu g<c
-vmap <LEADER>cu g<
+" nnoremap ci cl
+" let g:tcomment_textobject_inlinecomment = ''
+" nmap <LEADER>cn g>c
+" vmap <LEADER>cn g>
+" nmap <LEADER>cu g<c
+" vmap <LEADER>cu g<
 
 
 " ===
 " === NrrwRgn
 " ===
-let g:nrrw_rgn_nomap_nr = 1
-let g:nrrw_rgn_nomap_Nr = 1
-noremap <c-y> :NR<CR>
+" let g:nrrw_rgn_nomap_nr = 1
+" let g:nrrw_rgn_nomap_Nr = 1
+" noremap <c-y> :NR<CR>
 
 
 " ===
 " === any-jump
 " ===
-nnoremap j :AnyJump<CR>
-let g:any_jump_window_width_ratio  = 0.8
-let g:any_jump_window_height_ratio = 0.9
+" nnoremap j :AnyJump<CR>
+" let g:any_jump_window_width_ratio  = 0.8
+" let g:any_jump_window_height_ratio = 0.9
 
 
 " ===
 " === typescript-vim
 " ===
-let g:typescript_ignore_browserwords = 1
+" let g:typescript_ignore_browserwords = 1
 
 
 " ===
 " === Agit
 " ===
-nnoremap <LEADER>gl :Agit<CR>
-let g:agit_no_default_mappings = 1
+" nnoremap <LEADER>gl :Agit<CR>
+" let g:agit_no_default_mappings = 1
 
 
 " ===
 " === nvim-treesitter
 " ===
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
+"   highlight = {
+"     enable = true,              -- false will disable the whole extension
+"     disable = { "c", "rust" },  -- list of language that will be disabled
+"   },
+" }
+" EOF
 
 " ===================== End of Plugin Settings =====================
 
 " ===
 " === Necessary Commands to Execute
 " ===
-exec "nohlsearch"
+" exec "nohlsearch"
 
 " Open the _machine_specific.vim file if it has just been created
-if has_machine_specific_file == 0
-	exec "e ~/.config/nvim/_machine_specific.vim"
-endif
+" if has_machine_specific_file == 0
+" 	exec "e ~/.config/nvim/_machine_specific.vim"
+" endif
 
 " ====================
 " === OLD SETTINGS ===
