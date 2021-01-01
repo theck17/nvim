@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+*.swp
+.DS_Store
+view/
+plugged/
+sessions/
+autoload/plug.vim.old
+tmp/
+.netrwhist
+_machine_specific.vim
+.vim-bookmarks
