@@ -624,9 +624,9 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 "Plug 'w0rp/ale'
 
 " Other visual enhancement
-“Plug 'nathanaelkane/vim-indent-guides'
-”Plug 'itchyny/vim-cursorword'
-“Plug 'tmhedberg/SimpylFold'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'itchyny/vim-cursorword'
+" Plug 'tmhedberg/SimpylFold'
 
 " Initialize plugin system
 call plug#end()
