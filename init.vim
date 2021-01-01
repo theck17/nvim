@@ -50,7 +50,7 @@ set exrc
 set secure
 set number  					"显示行号"
 set norelativenumber  			"显示行号，当前行为第一行 当前取消"
-set cursorline                  "突出显示当前行"
+" set cursorline                  "突出显示当前行"
 set hidden
 set noexpandtab                 "不允许扩展table"
 set tabstop=2                   "一个 tab 显示出来是多少个空格，默认 8
@@ -92,12 +92,12 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
-set colorcolumn=100
+" set colorcolumn=100
 set updatetime=100
 set virtualedit=block
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
 set enc=utf-8
-set cursorcolumn                "突出显示当前列"
+" set cursorcolumn                "突出显示当前列"
 set nowrap                      "设置换行 不超出窗口 当前取消"
 set showtabline=0               "隐藏顶部标签栏"
 set guioptions-=r               "隐藏右侧滚动条" 
@@ -173,8 +173,8 @@ noremap k j
 noremap j h
 noremap = nzz
 noremap - Nzz
-noremap I 5h
-noremap K 5k
+noremap I 5k
+noremap K 5j
 
 " 空格+会车 取消搜索
 noremap <LEADER><CR> :nohlsearch<CR> 
@@ -182,7 +182,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 map s <nop> 
 map S :w<CR>
 map Q :q<CR>
-map R :source $HOME/.vimrc<CR>
+map R :source $HOME/.config/nvim/init.vim<CR>
+" map R :source $HOME/.vimrc<CR>
 noremap <C-I> 5<C-y>
 noremap <C-K> 5<C-e>
 " 分屏
@@ -437,16 +438,17 @@ Plug 'bpietravalle/vim-bolt'
 "Plug 'theniceboy/nvim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " macvim
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"Plug 'connorholyday/vim-snazzy'
+Plug 'connorholyday/vim-snazzy'
 "Plug 'NLKNguyen/papercolor-theme'
-"Plug 'ayu-theme/ayu-vim'
 "Plug 'bling/vim-bufferline'
 
 " Status line 状态栏
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
+Plug 'connorholyday/vim-snazzy'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ayu-theme/ayu-vim'
+Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -478,15 +480,15 @@ Plug 'wellle/tmux-complete.vim'
 " Plug 'davidhalter/jedi-vim'
 
 " Snippets 代码片段
-" Plug ‘honza/vim-snippets’
-" Plug 'SirVer/ultisnips's
-Plug 'theniceboy/vim-snippets'
+Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'theniceboy/vim-snippets'
 
 " Undo Tree 可视化撤消历史记录
 Plug 'mbbill/undotree'
 
 " Git
-Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+" Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
@@ -531,7 +533,7 @@ Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 " Python
 " Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 "Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
@@ -645,11 +647,11 @@ set lazyredraw
 " ===
 set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set background=dark
-"let ayucolor="mirage"
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"let g:one_allow_italics = 1
+set background=dark
+let ayucolor="mirage"
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:one_allow_italics = 1
 "color dracula
 "color one
 "color deus
@@ -660,7 +662,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set background=light
 "set cursorcolumn
 
-hi NonText ctermfg=gray guifg=grey10
+"hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 "let g:SnazzyTransparent = 1
