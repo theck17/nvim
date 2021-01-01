@@ -434,7 +434,7 @@ call plug#begin('~/.vim/plugged')
 " Pretty Dress vim语法高亮显示
 " neovim
 Plug 'bpietravalle/vim-bolt'
-" Plug 'theniceboy/nvim-deus'
+"Plug 'theniceboy/nvim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " macvim
 Plug 'vim-airline/vim-airline'
@@ -648,7 +648,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "let g:one_allow_italics = 1
 "color dracula
 "color one
-color deus
+"color deus
 "color gruvbox
 "let ayucolor="light"
 "color ayu
