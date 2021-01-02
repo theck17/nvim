@@ -404,16 +404,7 @@ autocmd BufNewFile *.cpp,*.sh,*.py exec ":call SetTitle()"
 "自动将光标定位到末尾"
 autocmd BufNewFile * normal G
 
-" press on F5 run .py
-filetype plugin on
-" 按 F5 执行当前 Python 代码"
-map <F5> :call PRUN()<CR>
-func! PRUN()
-    exec "w"
-    if &filetype == 'python'
-        exec "!python %"
-    endif
-endfunc
+
 
 " ===
 " === Install Plugins with Vim-Plug
