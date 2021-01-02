@@ -186,6 +186,7 @@ map R :source $HOME/.config/nvim/init.vim<CR>
 " map R :source $HOME/.vimrc<CR>
 noremap <C-I> 5<C-y>
 noremap <C-K> 5<C-e>
+
 " 分屏
 map sl :set splitright<CR>:vsplit<CR>
 map sj :set nosplitright<CR>:vsplit<CR>
@@ -196,6 +197,7 @@ map <LEADER>l <C-w>l
 map <LEADER>i <C-w>k
 map <LEADER>j <C-w>h
 map <LEADER>k <C-w>k
+" 方向键改变大小
 map <up> :res +5<CR>
 map <down> :res -5<CR>
 map <left> :vertical resize-5<CR>
@@ -213,56 +215,56 @@ map t- :+tabenext<CR>
 " === Markdown Settings
 " ===
 " Snippets
-source ~/.config/nvim/md-snippets.vim
+" source ~/.config/nvim/md-snippets.vim
 " auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 
 " ===
 " === Other useful stuff
 " ===
 " Open a new instance of st with the cwd
-nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+" nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Move the next character to the end of the line with ctrl+9
-inoremap <C-u> <ESC>lx$p
+" inoremap <C-u> <ESC>lx$p
 
 " Opening a terminal window
-noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+" noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
-noremap <LEADER>sc :set spell!<CR>
+" noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
-noremap ` ~
+" noremap ` ~
 
-noremap <C-c> zz
+" noremap <C-c> zz
 
 " Auto change directory to current dir
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet 
+" noremap tx :r !figlet 
 
 " find and replace
-noremap \s :%s//g<left><left>
+" noremap \s :%s//g<left><left>
 
 " set wrap
-noremap <LEADER>sw :set wrap<CR>
+" noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
-function! SynGroup()
-	let l:s = synID(line('.'), col('.'), 1)
-	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-map <F10> :call SynGroup()<CR>
+" function! SynGroup()
+"	let l:s = synID(line('.'), col('.'), 1)
+"	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+" endfun
+" map <F10> :call SynGroup()<CR>
 
 " Duplicate words
-map <LEADER>fd /\(\<\w\+\>\)\_s*\1
+" map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 
-" Compile function
+" Compile function  编译函数
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
@@ -416,11 +418,10 @@ endfunc
 " ===
 " === Install Plugins with Vim-Plug
 " ===
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 
-call plug#begin('~/.vim/plugged')
+" call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
+
 
 " 模糊查找器插件
 " Plug 'LoricAndre/fzterm.nvim'
