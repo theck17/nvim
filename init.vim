@@ -720,11 +720,11 @@ let g:instant_markdown_python = 1
 "let g:mkdp_open_to_the_world = 1
 "map <F8> <Plug>MarkdownPreview        " 普通模式
 "map <C-F8> <Plug>StopMarkdownPreview        " 插入模式
-nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
-imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
-nmap <silent> <C-F8> <Plug>StopMarkdownPreview    " 普通模式
-imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
-"let g:markdown_preview_sync_chrome_path = ""
+"nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
+"imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
+"nmap <silent> <C-F8> <Plug>StopMarkdownPreview    " 普通模式
+"imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
+""let g:markdown_preview_sync_chrome_path = ""
 
 " 配置快捷键
 "autocmd filetype markdown nnoremap <F9> :MarkSyncPreview<cr>
