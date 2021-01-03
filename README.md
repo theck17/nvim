@@ -105,3 +105,7 @@ npm install figlet
 ```bash
 sudo apt-get xclip
 ```
+* Install instant-markdown-d
+```bash
+sudo npm -g install instant-markdown-d
+```

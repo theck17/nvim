@@ -50,7 +50,7 @@ set exrc
 set secure
 set number  					"显示行号"
 set norelativenumber  			"显示行号，当前行为第一行 当前取消"
-" set cursorline                  "突出显示当前行"
+set cursorline                  "突出显示当前行"
 set hidden
 set noexpandtab                 "不允许扩展table"
 set tabstop=2                   "一个 tab 显示出来是多少个空格，默认 8
@@ -97,7 +97,7 @@ set updatetime=100
 set virtualedit=block
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
 set enc=utf-8
-" set cursorcolumn                "突出显示当前列"
+set cursorcolumn                "突出显示当前列"
 set nowrap                      "设置换行 不超出窗口 当前取消"
 set showtabline=0               "隐藏顶部标签栏"
 set guioptions-=r               "隐藏右侧滚动条" 
@@ -142,27 +142,28 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " ===
 " === Terminal Behaviors
 " ===
-let g:neoterm_autoscroll = 1
-autocmd TermOpen term://* startinsert
-tnoremap <C-N> <C-\><C-N>
-tnoremap <C-O> <C-\><C-N><C-O>
-let g:terminal_color_0  = '#000000'
-let g:terminal_color_1  = '#FF5555'
-let g:terminal_color_2  = '#50FA7B'
-let g:terminal_color_3  = '#F1FA8C'
-let g:terminal_color_4  = '#BD93F9'
-let g:terminal_color_5  = '#FF79C6'
-let g:terminal_color_6  = '#8BE9FD'
-let g:terminal_color_7  = '#BFBFBF'
-let g:terminal_color_8  = '#4D4D4D'
-let g:terminal_color_9  = '#FF6E67'
-let g:terminal_color_10 = '#5AF78E'
-let g:terminal_color_11 = '#F4F99D'
-let g:terminal_color_12 = '#CAA9FA'
-let g:terminal_color_13 = '#FF92D0'
-let g:terminal_color_14 = '#9AEDFE'
-
-" ===
+" let g:neoterm_autoscroll = 1
+" autocmd TermOpen term://* startinsert
+" tnoremap <C-N> <C-\><C-N>
+" tnoremap <C-O> <C-\><C-N><C-O>
+" let g:terminal_color_0  = '#000000'
+" let g:terminal_color_1  = '#FF5555'
+" let g:terminal_color_2  = '#50FA7B'
+" let g:terminal_color_3  = '#F1FA8C'
+" let g:terminal_color_4  = '#BD93F9'
+" let g:terminal_color_5  = '#FF79C6'
+" let g:terminal_color_6  = '#8BE9FD'
+" let g:terminal_color_7  = '#BFBFBF'
+" let g:terminal_color_8  = '#4D4D4D'
+" let g:terminal_color_9  = '#FF6E67'
+" let g:terminal_color_10 = '#5AF78E'
+" let g:terminal_color_11 = '#F4F99D'
+" let g:terminal_color_12 = '#CAA9FA'
+" let g:terminal_color_13 = '#FF92D0'
+" let g:terminal_color_14 = '#9AEDFE'
+"
+"
+"===
 " === Basic Mappings
 " ===
 " 重置按键
@@ -210,15 +211,6 @@ map sh <C-w>t<C-w>K
 map tu :tabe<CR>
 map t+ :-tabenext<CR>
 map t- :+tabenext<CR>
-
-" ===
-" === Markdown Settings
-" ===
-" Snippets
-" source ~/.config/nvim/md-snippets.vim
-" auto spell
-" autocmd BufRead,BufNewFile *.md setlocal spell
-
 " ===
 " === Other useful stuff
 " ===
@@ -426,21 +418,21 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress vim语法高亮显示
 " neovim
-Plug 'bpietravalle/vim-bolt'
-"Plug 'theniceboy/nvim-deus'
+" Plug 'bpietravalle/vim-bolt'
+" Plug 'theniceboy/nvim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " macvim
-Plug 'connorholyday/vim-snazzy'
+" Plug 'connorholyday/vim-snazzy'
 "Plug 'NLKNguyen/papercolor-theme'
 "Plug 'bling/vim-bufferline'
 
 " Status line 状态栏
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
-Plug 'connorholyday/vim-snazzy'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ayu-theme/ayu-vim'
-Plug 'bling/vim-bufferline'
+"Plug 'connorholyday/vim-snazzy'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -538,11 +530,14 @@ Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
 Plug 'keith/swift.vim'
 Plug 'arzg/vim-swift'
 
-" Markdown
+" markdown``
+"Plug 'iamcco/mathjax-support-for-mkdp'
+"Plug 'iamcco/markdown-preview.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-Plug 'dkarter/bullets.vim'
+"Plug 'dkarter/bullets.vim'
+"let g:mkdp_path_to_chrome = ""
 "Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 "Plug 'vimwiki/vimwiki'
 
@@ -637,25 +632,25 @@ set lazyredraw
 " ===
 " === Dress up my vim
 " ===
-set termguicolors " enable true colors support
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-let ayucolor="mirage"
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:one_allow_italics = 1
-"color dracula
-"color one
-"color deus
-"color gruvbox
-"let ayucolor="light"
-"color ayu
-"color xcodelighthc
-"set background=light
-"set cursorcolumn
+" set termguicolors " enable true colors support
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set background=dark
+" let ayucolor="mirage"
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+" let g:one_allow_italics = 1
+" color dracula
+" color one
+" color deus
+" color gruvbox
+" let ayucolor="light"
+" color ayu
+" color xcodelighthc
+" set background=light
+" set cursorcolumn
 
-"hi NonText ctermfg=gray guifg=grey10
-"hi SpecialKey ctermfg=blue guifg=grey70
+" hi NonText ctermfg=gray guifg=grey10
+" hi SpecialKey ctermfg=blue guifg=grey70
 
 "let g:SnazzyTransparent = 1
 "color snazzy
@@ -667,6 +662,73 @@ let g:one_allow_italics = 1
 " ===
 let g:airline_powerline_fonts = 0
 " let g:airline_theme='<theme>' " <theme> 代表某个主题的名称
+
+
+" ===
+" === markdown Settings
+" ===
+" Snippets
+" source ~/.config/nvim/md-snippets.vim
+" auto spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
+" ===
+" === vim-markdown-toc
+" ===
+let g:vmt_auto_update_on_save = 0
+let g:vmt_dont_insert_fence = 1
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+" ===
+" === vim-instant-markdown
+" ===
+"let g:instant_markdown_slow = 0
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_browser = "chrome --new-window"
+"let g:instant_markdown_autoscroll = 1
+"
+"filetype plugin on
+"set shell=bash\
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_open_to_the_world = 1
+let g:instant_markdown_allow_unsafe_content = 1
+let g:instant_markdown_allow_external_content = 0
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+let g:instant_markdown_browser = "chrome --new-window"
+let g:instant_markdown_autoscroll = 0
+let g:instant_markdown_port = 8888
+let g:instant_markdown_python = 1
+
+" ===
+" === mrakdown preview
+" ===
+"let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
+""let g:mkdp_browserfunc = 'MKDP_browserfuNc_default'
+"let g:mkdp_auto_start = 0
+"let g:mkdp_auto_open = 0
+"let g:mkdp_auto_close = 1
+"let g:mkdp_refresh_slow = 0
+"let g:mkdp_command_for_global = 0
+"let g:mkdp_open_to_the_world = 1
+"map <F8> <Plug>MarkdownPreview        " 普通模式
+"map <C-F8> <Plug>StopMarkdownPreview        " 插入模式
+nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
+imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
+nmap <silent> <C-F8> <Plug>StopMarkdownPreview    " 普通模式
+imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
+"let g:markdown_preview_sync_chrome_path = ""
+
+" 配置快捷键
+"autocmd filetype markdown nnoremap <F9> :MarkSyncPreview<cr>
+"autocmd filetype markdown nnoremap <S-F9> :MarkSyncClose<cr>
+
+
 
 " ==
 " == GitGutter
@@ -785,16 +847,7 @@ let g:airline_powerline_fonts = 0
 " autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
-" ===
-" === vim-instant-markdown
-" ===
-" let g:instant_markdown_slow = 0
-" let g:instant_markdown_autostart = 0
-" let g:instant_markdown_open_to_the_world = 1
-" let g:instant_markdown_allow_unsafe_content = 1
-" let g:instant_markdown_allow_external_content = 0
-" let g:instant_markdown_mathjax = 1
-" let g:instant_markdown_autoscroll = 1
+
 
 
 " ===
@@ -1298,17 +1351,6 @@ let g:airline_powerline_fonts = 0
 " noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
 " noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
 " noremap <LEADER>rt :ReplStop<CR>
-
-
-" ===
-" === vim-markdown-toc
-" ===
-" let g:vmt_auto_update_on_save = 0
-" let g:vmt_dont_insert_fence = 1
-" let g:vmt_cycle_list_item_markers = 1
-" let g:vmt_fence_text = 'TOC'
-" let g:vmt_fence_closing_text = '/TOC'
-
 
 " ===
 " === rnvimr
