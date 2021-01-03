@@ -303,7 +303,7 @@ endfunc
 "新建文件时自动写入
 autocmd BufNewFile *.cpp,*.sh,*.py exec ":call SetTitle()"
 "新建文件后快捷键写入
-nmap <leader>add :call SetTitle()<CR>
+nmap <leader>at :call SetTitle()<CR>
 func SetTitle()
 " 对于Cpp文件 
 if &filetype == 'cpp'
