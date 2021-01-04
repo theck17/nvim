@@ -41,15 +41,37 @@ source ~/.config/nvim/_machine_specific.vim
 "set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
-syntax on
+syntax on                   " 语法高亮
 
 " ===
 " === Editor behavior
 " ===
 set exrc
+set autoread                    " 设置当文件被改动时自动载入
+set completeopt=preview,menu    " 代码补全
+set clipboard=unnamed           " 共享剪切板
+set autowrite                   " 自动保存
+
+set ruler                       " 打开状态栏标尺
+set magic                       " 设置魔术
+set guioptions-=T               " 隐藏工具栏
+
+
+set guioptions-=T               " 隐藏工具栏
+set guioptions-=m               " 隐藏菜单栏
+" 设置在状态行显示的信息
+" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+set foldcolumn=0
+set foldmethod=indent 
+set foldlevel=3 
+set foldenable                  " 开始折叠
+
+set noeb                        " 去掉输入错误提示音
+set confirm                     " 在处理未保存或只读文件的时候，弹出确认
+
 set secure
-set number  					"显示行号"
-set norelativenumber  			"显示行号，当前行为第一行 当前取消"
+set number                      "显示行号"
+set norelativenumber            "显示行号，当前行为第一行 当前取消"
 set cursorline                  "突出显示当前行"
 set hidden
 set noexpandtab                 "不允许扩展table"
@@ -74,9 +96,10 @@ set splitright
 set splitbelow
 set noshowmode
 set showcmd
-set wildmenu 					"输入命令时显示备选"
+set wildmenu                    "输入命令时显示备选"
 set ignorecase                  "忽略大小写"
 set smartcase
+set smartindent
 set shortmess+=c
 set inccommand=split
 set completeopt=longest,noinsert,menuone,noselect,preview
@@ -115,7 +138,7 @@ set selectmode=mouse,key
 set matchtime=5
 set incsearch
 set hlsearch                    "高亮搜索项"
-set incsearch					"搜索中高亮"
+set incsearch                   "搜索中高亮"
 exec "nohlsearch"
 set whichwrap+=<,>,h,l
 set autoread
@@ -134,9 +157,10 @@ let mapleader=" "
 set nocompatible
 filetype on
 filetype indent on
-filetype plugin on
+filetype plugin on   " 允许插件
 filetype plugin indent on
 
+autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>   " quickfix模式
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " ===
@@ -425,35 +449,35 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'arzg/vim-colors-xcode'
 " macvim
 " Plug 'connorholyday/vim-snazzy'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'bling/vim-bufferline'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'bling/vim-bufferline'
 
 " Status line 状态栏
 " Plug 'theniceboy/eleline.vim'
 " Plug 'ojroques/vim-scrollstatus'
-"Plug 'connorholyday/vim-snazzy'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'bling/vim-bufferline'
+" Plug 'connorholyday/vim-snazzy'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " General Highlighter 用于异步显示文件中的颜色
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'RRethy/vim-illuminate'
+" Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Plug 'RRethy/vim-illuminate'
 
 " File navigation 文件目录
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'kevinhwang91/rnvimr'
-Plug 'airblade/vim-rooter'
-Plug 'pechorin/any-jump.vim'
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'junegunn/fzf.vim'
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'kevinhwang91/rnvimr'
+" Plug 'airblade/vim-rooter'
+" Plug 'pechorin/any-jump.vim'
 
 " Taglist 标签
-Plug 'liuchengxu/vista.vim'
-"Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+" Plug 'liuchengxu/vista.vim'
+" Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
 
 " Debugger 多语言图形调试器
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
@@ -467,70 +491,71 @@ Plug 'wellle/tmux-complete.vim'
 
 " Snippets 代码片段
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 " Plug 'SirVer/ultisnips'
 " Plug 'theniceboy/vim-snippets'
 
 " Undo Tree 可视化撤消历史记录
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 
 " Git
 " Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-"Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-"Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
-"Plug 'rhysd/conflict-marker.vim'
-"Plug 'tpope/vim-fugitive'
+" Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+" Plug 'mhinz/vim-signify'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'cohama/agit.vim'
+" Plug 'rhysd/conflict-marker.vim'
+" Plug 'tpope/vim-fugitive'
 
 " Autoformat 自动格式化
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
+" Plug 'google/vim-maktaba'
+" Plug 'google/vim-codefmt'
 
 " Tex 适用于LaTeX文件
 " Plug 'lervag/vimtex'
 
 " CSharp 为C＃提供类似IDE的功能
-"Plug 'OmniSharp/omnisharp-vim'
-"Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
+" Plug 'OmniSharp/omnisharp-vim'
+" Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
 
 " HTML, CSS, JavaScript, Typescript, PHP, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'neoclide/jsonc.vim'
-Plug 'othree/html5.vim'
-Plug 'alvan/vim-closetag'
+" Plug 'elzr/vim-json'
+" Plug 'neoclide/jsonc.vim'
+" Plug 'othree/html5.vim'
+" Plug 'alvan/vim-closetag'
 " Plug 'hail2u/vim-css3-syntax' " , { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-"Plug 'jaxbot/browserlink.vim'
+" Plug 'jaxbot/browserlink.vim'
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'posva/vim-vue'
 " Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'leafOfTree/vim-svelte-plugin'
 " Plug 'leafgarland/typescript-vim'
-"Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-"Plug 'mattn/emmet-vim'
+" Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'mattn/emmet-vim'
 
 " Go
-Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
+" Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 
 " Python
 " Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
-Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+" Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 " Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-"Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
-"Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
-Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
+" Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+" Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+" Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter  提供文件类型检测，语法突出显示和缩进
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
+" Plug 'dart-lang/dart-vim-plugin'
+" Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
 
 " Swift
-Plug 'keith/swift.vim'
-Plug 'arzg/vim-swift'
+" Plug 'keith/swift.vim'
+" Plug 'arzg/vim-swift'
 
 " markdown``
 "Plug 'iamcco/mathjax-support-for-mkdp'
@@ -547,26 +572,26 @@ Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] 
 " Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 
 " Editor Enhancement 编辑增强
-"Plug 'Raimondi/delimitMate'
-Plug 'jiangmiao/auto-pairs'
-Plug 'mg979/vim-visual-multi'    " 多光标
-Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
-Plug 'theniceboy/antovim' " gs to switch
-Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
-Plug 'junegunn/vim-after-object' " da= to delete what's after =
-Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
-Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
-Plug 'easymotion/vim-easymotion'
+" Plug 'Raimondi/delimitMate'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'mg979/vim-visual-multi'    " 多光标
+" Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
+" Plug 'theniceboy/antovim' " gs to switch
+" Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+" Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
+" Plug 'junegunn/vim-after-object' " da= to delete what's after =
+" Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+" Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+" Plug 'easymotion/vim-easymotion'
 " Plug 'Konfekt/FastFold'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'wellle/context.vim'
-Plug 'svermeulen/vim-subversive'
-Plug 'theniceboy/argtextobj.vim'
-Plug 'rhysd/clever-f.vim'
-Plug 'chrisbra/NrrwRgn'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'machakann/vim-highlightedyank' " 高亮显示复制内容
+" Plug 'svermeulen/vim-subversive'
+" Plug 'theniceboy/argtextobj.vim'
+" Plug 'rhysd/clever-f.vim'
+" Plug 'chrisbra/NrrwRgn'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'machakann/vim-highlightedyank' " 高亮显示复制内容
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
@@ -578,7 +603,7 @@ Plug 'machakann/vim-highlightedyank' " 高亮显示复制内容
 " Plug 'kshenoy/vim-signature'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+" Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 
 " Documentation
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
@@ -586,17 +611,17 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 " Mini Vim-APP
 "Plug 'jceb/vim-orgmode'
 "Plug 'mhinz/vim-startify'
-Plug 'skywind3000/asynctasks.vim'
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asynctasks.vim'
+" Plug 'skywind3000/asyncrun.vim'
 
 " Vim Applications
-Plug 'itchyny/calendar.vim'
+" Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
-Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'wincent/terminus'
+" Plug 'luochen1990/rainbow'
+" Plug 'mg979/vim-xtabline'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'wincent/terminus'
 
 " Other useful utilities
 " Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
@@ -606,7 +631,7 @@ Plug 'wincent/terminus'
 " Other useful utilities
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'ntpeters/vim-better-whitespace', { 'on': ['EnableWhitespace', 'ToggleWhitespace'] } "displays trailing whitespace (after :EnableWhitespace, vim slows down)
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+" Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
 
 
 " Dependencies
@@ -660,9 +685,34 @@ set lazyredraw
 " ============================ Start of Plugin Settings =========================
 
 " ===
-" === eleline.vim 状态栏
+" === airline 状态栏
 " ===
+set t_Co=256
+set laststatus=2
+" 是否使用powerline打过补丁的字体
 let g:airline_powerline_fonts = 0
+" 开启tabline
+let g:airline#extensions#tabline#enabled = 1
+" tabline中当前buffer两端的分隔字符
+let g:airline#extensions#tabline#left_sep = ' '
+" tabline中未激活buffer两端的分隔字符
+let g:airline#extensions#tabline#left_alt_sep = ' '
+" tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" 映射切换buffer的键位
+nnoremap [b :bp<CR>
+nnoremap ]b :bn<CR>
+" 映射<leader>num到num buffer
+map <leader>1 :b 1<CR>
+map <leader>2 :b 2<CR>
+map <leader>3 :b 3<CR>
+map <leader>4 :b 4<CR>
+map <leader>5 :b 5<CR>
+map <leader>6 :b 6<CR>
+map <leader>7 :b 7<CR>
+map <leader>8 :b 8<CR>
+map <leader>9 :b 9<CR>
+
 " let g:airline_theme='<theme>' " <theme> 代表某个主题的名称
 
 
@@ -676,11 +726,28 @@ let g:airline_powerline_fonts = 0
 " ===
 " === vim-markdown-toc
 " ===
-let g:vmt_auto_update_on_save = 0
+let g:vmt_auto_update_on_save = 1
 let g:vmt_dont_insert_fence = 1
 let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
+"run :GenTocGFM
+" ===
+" === mrakdown preview
+" ===
+let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
+"let g:mkdp_browserfunc = 'MKDP_browserfuNc_default'
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_open = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 1
+nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
+imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
+nmap <silent> <C-F8> <Plug>StopMarkdownPreview    " 普通模式
+imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
+""let g:markdown_preview_sync_chrome_path = ""
 " ===
 " === vim-instant-markdown
 " ===
@@ -691,46 +758,7 @@ let g:vmt_fence_closing_text = '/TOC'
 "let g:instant_markdown_allow_external_content = 0
 "let g:instant_markdown_mathjax = 1
 "let g:instant_markdown_browser = "chrome --new-window"
-"let g:instant_markdown_autoscroll = 1
-"
-"filetype plugin on
-"set shell=bash\
-let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_open_to_the_world = 1
-let g:instant_markdown_allow_unsafe_content = 1
-let g:instant_markdown_allow_external_content = 0
-let g:instant_markdown_mathjax = 1
-let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-let g:instant_markdown_browser = "chrome --new-window"
-let g:instant_markdown_autoscroll = 0
-let g:instant_markdown_port = 8888
-let g:instant_markdown_python = 1
-
-" ===
-" === mrakdown preview
-" ===
-"let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
-""let g:mkdp_browserfunc = 'MKDP_browserfuNc_default'
-"let g:mkdp_auto_start = 0
-"let g:mkdp_auto_open = 0
-"let g:mkdp_auto_close = 1
-"let g:mkdp_refresh_slow = 0
-"let g:mkdp_command_for_global = 0
-"let g:mkdp_open_to_the_world = 1
-"map <F8> <Plug>MarkdownPreview        " 普通模式
-"map <C-F8> <Plug>StopMarkdownPreview        " 插入模式
-"nmap <silent> <F8> <Plug>MarkdownPreview        " 普通模式
-"imap <silent> <F8> <Plug>MarkdownPreview        " 插入模式
-"nmap <silent> <C-F8> <Plug>StopMarkdownPreview    " 普通模式
-"imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
-""let g:markdown_preview_sync_chrome_path = ""
-
-" 配置快捷键
-"autocmd filetype markdown nnoremap <F9> :MarkSyncPreview<cr>
-"autocmd filetype markdown nnoremap <S-F9> :MarkSyncClose<cr>
-
-
+"let g:instant_markdown_autoscroll = 
 
 " ==
 " == GitGutter
@@ -1506,17 +1534,17 @@ let g:instant_markdown_python = 1
 " ==
 " == NERDTree-git
 " ==
-" let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "✹",
-"    \ "Staged"    : "✚",
-"    \ "Untracked" : "✭",
-"    \ "Renamed"   : "➜",
-"    \ "Unmerged"  : "═",
-"    \ "Deleted"   : "✖",
-"    \ "Dirty"     : "✗",
-"    \ "Clean"     : "✔︎",
-"    \ "Unknown"   : "?"
-"    \ }
+"let g:NERDTreeIndicatorMapCustom = {
+"  \ "Modified"  : "✹",
+"  \ "Staged"    : "✚",
+"  \ "Untracked" : "✭",
+"  \ "Renamed"   : "➜",
+"  \ "Unmerged"  : "═",
+"  \ "Deleted"   : "✖",
+"  \ "Dirty"     : "✗",
+"  \ "Clean"     : "✔︎",
+"  \ "Unknown"   : "?"
+"  \ }
 
 " ===
 " === ale 异常检查
