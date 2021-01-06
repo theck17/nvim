@@ -751,14 +751,14 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " ===
 " === vim-instant-markdown
 " ===
-"let g:instant_markdown_slow = 0
-"let g:instant_markdown_autostart = 0
-"let g:instant_markdown_open_to_the_world = 1
-"let g:instant_markdown_allow_unsafe_content = 1
-"let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-"let g:instant_markdown_browser = "chrome --new-window"
-"let g:instant_markdown_autoscroll = 
+" let g:instant_markdown_slow = 0
+" let g:instant_markdown_autostart = 0
+" let g:instant_markdown_open_to_the_world = 1
+" let g:instant_markdown_allow_unsafe_content = 1
+" let g:instant_markdown_allow_external_content = 0
+" let g:instant_markdown_mathjax = 1
+" let g:instant_markdown_browser = "chrome --new-window"
+" let g:instant_markdown_autoscroll = 
 
 " ==
 " == GitGutter
@@ -903,29 +903,29 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " noremap <silent> <C-w> :Buffers<CR>
 " noremap <leader>; :History:<CR>
 
-"let g:fzf_preview_window = 'right:60%'
-"let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" let g:fzf_preview_window = 'right:60%'
+" let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-"function! s:list_buffers()
-"  redir => list
-"  silent ls
-"  redir END
-"  return split(list, "\n")
-"endfunction
+" function! s:list_buffers()
+"   redir => list
+"   silent ls
+"   redir END
+"   return split(list, "\n")
+" endfunction
 
-"function! s:delete_buffers(lines)
-"  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-"endfunction
+" function! s:delete_buffers(lines)
+"   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+" endfunction
 
-"command! BD call fzf#run(fzf#wrap({
-"  \ 'source': s:list_buffers(),
-"  \ 'sink*': { lines -> s:delete_buffers(lines) },
-"  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-"\ }))
+" command! BD call fzf#run(fzf#wrap({
+"   \ 'source': s:list_buffers(),
+"   \ 'sink*': { lines -> s:delete_buffers(lines) },
+"   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+" \ }))
 
 " noremap <c-d> :BD<CR>
 
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
 
 " ===
