@@ -557,15 +557,14 @@ Plug 'SirVer/ultisnips'
 " Plug 'keith/swift.vim'
 " Plug 'arzg/vim-swift'
 
-" markdown``
+" markdown
 "Plug 'iamcco/mathjax-support-for-mkdp'
 "Plug 'iamcco/markdown-preview.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 "Plug 'dkarter/bullets.vim'
-"let g:mkdp_path_to_chrome = ""
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 "Plug 'vimwiki/vimwiki'
 
 " Other filetypes
