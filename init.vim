@@ -63,7 +63,7 @@ set guioptions-=m               " 隐藏菜单栏
 " set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 set foldcolumn=0
 set foldmethod=indent 
-set foldlevel=3 
+set foldlevel=99 
 set foldenable                  " 开始折叠
 
 set noeb                        " 去掉输入错误提示音
@@ -120,7 +120,7 @@ set updatetime=100
 set virtualedit=block
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
 set enc=utf-8
-set cursorcolumn                "突出显示当前列"
+set nocursorcolumn                "突出显示当前列"
 set nowrap                      "设置换行 不超出窗口 当前取消"
 set showtabline=0               "隐藏顶部标签栏"
 set guioptions-=r               "隐藏右侧滚动条" 
@@ -200,7 +200,15 @@ noremap = nzz
 noremap - Nzz
 noremap I 5k
 noremap K 5j
-
+" insert mode
+inoremap <C-j> <Left>
+inoremap <C-l> <Right>
+inoremap <C-i> <Up>
+inoremap <C-k> <Down>
+" inoremap <C-q> <PageUp>
+" inoremap <C-z> <PageDown>
+" inoremap <C-a> <Home>
+" inoremap <C-e> <End>
 " 空格+会车 取消搜索
 noremap <LEADER><CR> :nohlsearch<CR> 
 
@@ -244,6 +252,10 @@ map t- :+tabenext<CR>
 " Move the next character to the end of the line with ctrl+9
 " inoremap <C-u> <ESC>lx$p
 
+" Faster in-line navigation
+noremap W 5w
+noremap B 5b
+
 " Opening a terminal window
 " noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
@@ -265,7 +277,7 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 " noremap tx :r !figlet 
 
 " find and replace
-" noremap \s :%s//g<left><left>
+noremap \s :%s//g<left><left>
 
 " set wrap
 " noremap <LEADER>sw :set wrap<CR>
@@ -279,6 +291,29 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Duplicate words
 " map <LEADER>fd /\(\<\w\+\>\)\_s*\1
+
+" N key: go to the start of the line
+" noremap <silent> N 0
+" M key: go to the end of the line
+" noremap <silent> M $
+
+" ===
+" === Insert Mode Cursor Movement
+" ===
+inoremap <C-a> <ESC>A
+
+
+" ===
+" === Command Mode Cursor Movement
+" ===
+" cnoremap <C-a> <Home>
+" cnoremap <C-e> <End>
+" cnoremap <C-p> <Up>
+" cnoremap <C-n> <Down>
+" cnoremap <C-b> <Left>
+" cnoremap <C-f> <Right>
+" cnoremap <M-b> <S-Left>
+" cnoremap <M-w> <S-Right>
 
 " Compile function  编译函数
 noremap r :call CompileRunGcc()<CR>
@@ -347,8 +382,8 @@ if &filetype == 'python'
     call append(8, "") 
     call append(9, "") 
     call append(10, "") 
-    call append(11, "if __name__ == __\"main\":") 
-    call append(12, "	pass") 
+    call append(11, "if __name__ == \"__main__\":") 
+    call append(12, "   pass") 
     call append(13, "") 
 endif
 " C
@@ -457,6 +492,8 @@ autocmd BufNewFile * normal G
 " call plug#begin('~/.vim/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
+" theme
+Plug 'crusoexia/vim-monokai'
 
 " 模糊查找器插件
 " Plug 'LoricAndre/fzterm.nvim'
@@ -669,6 +706,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 "Plug 'w0rp/ale'
 
 " Other visual enhancement
+Plug 'Yggdroot/indentLine'  " 缩进
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'itchyny/vim-cursorword'
 " Plug 'tmhedberg/SimpylFold'
@@ -710,34 +748,88 @@ set lazyredraw
 " ============================ Start of Plugin Settings =========================
 
 " ===
+" === theme
+" ===
+colo monokai
+
+
+" ===
 " === airline 状态栏
 " ===
-set t_Co=256
-set laststatus=2
-" 是否使用powerline打过补丁的字体
-let g:airline_powerline_fonts = 0
-" 开启tabline
+" 设置状态栏
 let g:airline#extensions#tabline#enabled = 1
-" tabline中当前buffer两端的分隔字符
-let g:airline#extensions#tabline#left_sep = ' '
-" tabline中未激活buffer两端的分隔字符
-let g:airline#extensions#tabline#left_alt_sep = ' '
-" tabline中buffer显示编号
-let g:airline#extensions#tabline#buffer_nr_show = 1
-" 映射切换buffer的键位
-nnoremap [b :bp<CR>
-nnoremap ]b :bn<CR>
-" 映射<leader>num到num buffer
-map <leader>1 :b 1<CR>
-map <leader>2 :b 2<CR>
-map <leader>3 :b 3<CR>
-map <leader>4 :b 4<CR>
-map <leader>5 :b 5<CR>
-map <leader>6 :b 6<CR>
-map <leader>7 :b 7<CR>
-map <leader>8 :b 8<CR>
-map <leader>9 :b 9<CR>
-
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_theme = ''  " 主题
+let g:airline#extensions#keymap#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+       \ '0': '0 ',
+       \ '1': '1 ',
+       \ '2': '2 ',
+       \ '3': '3 ',
+       \ '4': '4 ',
+       \ '5': '5 ',
+       \ '6': '6 ',
+       \ '7': '7 ',
+       \ '8': '8 ',
+       \ '9': '9 '
+       \}
+" 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+" 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
+nmap <leader>- <Plug>AirlineSelectPrevTab
+" 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+" 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
+nmap <leader>q :bp<cr>:bd #<cr>
+" 修改了一些个人不喜欢的字符
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = "CL" " current line
+let g:airline_symbols.whitespace = '|'
+let g:airline_symbols.maxlinenr = 'Ml' "maxline
+let g:airline_symbols.branch = 'BR'
+let g:airline_symbols.readonly = "RO"
+let g:airline_symbols.dirty = "DT"
+let g:airline_symbols.crypt = "CR" 
+" 
+" set t_Co=256
+" set laststatus=2
+" " 是否使用powerline打过补丁的字体
+" let g:airline_powerline_fonts = 0
+" " 开启tabline
+" let g:airline#extensions#tabline#enabled = 1
+" " tabline中当前buffer两端的分隔字符
+" let g:airline#extensions#tabline#left_sep = ' '
+" " tabline中未激活buffer两端的分隔字符
+" let g:airline#extensions#tabline#left_alt_sep = ' '
+" " tabline中buffer显示编号
+" let g:airline#extensions#tabline#buffer_nr_show = 1
+" " 映射切换buffer的键位
+" nnoremap [b :bp<CR>
+" nnoremap ]b :bn<CR>
+" " 映射<leader>num到num buffer
+" map <leader>1 :b 1<CR>
+" map <leader>2 :b 2<CR>
+" map <leader>3 :b 3<CR>
+" map <leader>4 :b 4<CR>
+" map <leader>5 :b 5<CR>
+" map <leader>6 :b 6<CR>
+" map <leader>7 :b 7<CR>
+" map <leader>8 :b 8<CR>
+" map <leader>9 :b 9<CR>
+" 
 " let g:airline_theme='<theme>' " <theme> 代表某个主题的名称
 
 
@@ -1585,10 +1677,10 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " ===
 " === vim-indent-guide
 " ===
-" let g:indent_guides_guide_size = 1
-" let g:indent_guides_start_level = 2
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_color_change_percent = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 1
 " silent! unmap <LEADER>ig
 " autocmd WinEnter * silent! unmap <LEADER>ig
 
