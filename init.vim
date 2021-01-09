@@ -285,7 +285,7 @@ noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ % -o %<"
+		exec "!gcc % -o %<"
 		exec "!time ./%<"
 	elseif &filetype == 'cpp'
 		set splitbelow
@@ -329,73 +329,6 @@ autocmd BufNewFile *.cpp,*.sh,*.py exec ":call SetTitle()"
 "新建文件后快捷键写入
 nmap <leader>at :call SetTitle()<CR>
 func SetTitle()
-" 对于Cpp文件 
-if &filetype == 'cpp'
-    call setline(1,"/**") 
-    call append(line("."), " *   Copyright (C) ".strftime("%Y")." All rights reserved.")
-    call append(line(".")+1, " *") 
-    call append(line(".")+2, " *   FileName      ：".expand("%:t")) 
-    call append(line(".")+3, " *   Author        ：C.K")
-    call append(line(".")+4, " *   Email         ：wkh19960317@163.com")
-    call append(line(".")+5, " *   DateTime      ：".strftime("%Y-%m-%d %H:%M:%S")) 
-    call append(line(".")+6, " *   Description   ：") 
-    call append(line(".")+7, " */") 
-    call append(line(".")+8, "#include <algorithm>　　　 //STL 通用算法") 
-    call append(line(".")+9, "#include <bitset>　　　　　//STL 位集容器") 
-    call append(line(".")+10, "#include <cctype>         //字符处理") 
-    call append(line(".")+11, "#include <cerrno> 　　　　 //定义错误码 ") 
-    call append(line(".")+12, "#include <cfloat>　　　　 //浮点数处理 ") 
-    call append(line(".")+13, "#include <ciso646>         //对应各种运算符的宏") 
-    call append(line(".")+14, "#include <climits> 　　　　//定义各种数据类型最值的常量") 
-    call append(line(".")+15, "#include <clocale> 　　　　//定义本地化函数") 
-    call append(line(".")+16, "#include <cmath> 　　　　　//定义数学函数 ") 
-    call append(line(".")+17, "#include <complex>　　　　 //复数类 ") 
-    call append(line(".")+18, "#include <csignal>         //信号机制支持 ") 
-    call append(line(".")+19, "#include <csetjmp>         //异常处理支持 ") 
-    call append(line(".")+20, "#include <cstdarg>         //不定参数列表支持") 
-    call append(line(".")+21, "#include <cstddef>         //常用常量") 
-    call append(line(".")+22, "#include <cstdio> 　　　　 //定义输入／输出函数") 
-    call append(line(".")+23, "#include <cstdlib> 　　　　//定义杂项函数及内存分配函数") 
-    call append(line(".")+24, "#include <cstring> 　　　　//字符串处理") 
-    call append(line(".")+25, "#include <cwchar> 　　　　 //宽字符处理及输入／输出") 
-    call append(line(".")+26, "#include <cwctype> 　　　　//宽字符分类") 
-    call append(line(".")+27, "#include <deque>　　　　　 //STL 双端队列容器") 
-    call append(line(".")+28, "#include <exception>　　　 //异常处理类") 
-    call append(line(".")+29, "#include <fstream> 　　　 //文件输入／输出") 
-    call append(line(".")+30, "#include <functional>　　　//STL 定义运算函数（代替运算符）") 
-    call append(line(".")+31, "#include <limits> 　　　　 //定义各种数据类型最值常量") 
-    call append(line(".")+32, "#include <list>　　　　　　//STL 线性列表容器") 
-    call append(line(".")+33, "#include <map>　　　　　　 //STL 映射容器") 
-    call append(line(".")+34, "#include <locale>         //本地化特定信息") 
-    call append(line(".")+35, "#include <memory>         //STL通过分配器进行的内存分配") 
-    call append(line(".")+36, "#include <new>            //动态内存分配") 
-    call append(line(".")+37, "#include <numeric>         //STL常用的数字操作") 
-    call append(line(".")+38, "#include <iostream> 　　　//数据流输入／输出") 
-    call append(line(".")+39, "#include <istream>　　　　 //基本输入流") 
-    call append(line(".")+40, "#include <iterator>        //STL迭代器") 
-    call append(line(".")+41, "#include <ostream>　　　　 //基本输出流") 
-    call append(line(".")+42, "#include <queue>　　　　　 //STL 队列容器") 
-    call append(line(".")+43, "#include <set>　　　　　　 //STL 集合容器") 
-    call append(line(".")+44, "#include <sstream>　　　　 //基于字符串的流") 
-    call append(line(".")+45, "#include <stack>　　　　　 //STL 堆栈容器") 
-    call append(line(".")+46, "#include <stdexcept>　　　 //标准异常类") 
-    call append(line(".")+47, "#include <streambuf>　　　 //底层输入／输出支持") 
-    call append(line(".")+48, "#include <string>　　　　　//字符串类") 
-    call append(line(".")+49, "#include <vector>　　　　　//STL 动态数组容器") 
-    call append(line(".")+50, "#include <valarray>        //对包含值的数组的操作") 
-    call append(line(".")+51, "#include <ctime> 　　　　　//定义关于时间的函数") 
-    call append(line(".")+52, "using namespace std:") 
-    call append(line(".")+53, "") 
-    call append(line(".")+54, "") 
-    call append(line(".")+55, "") 
-    call append(line(".")+56, "") 
-    call append(line(".")+57, "") 
-    call append(line(".")+58, "") 
-    call append(line(".")+59, "int main(){") 
-    call append(line(".")+60, "    return 0;") 
-    call append(line(".")+61, "}") 
-endif
-
 "对于 .sh 文件 "
 if &filetype == 'sh'
     call setline(1, "#!/bin/bash")
@@ -405,7 +338,7 @@ endif
 if &filetype == 'python'
     call setline(1, "# !/usr/bin/env python3")
     call append(1, "# Author: C.K")
-    call append(2, "# Email: wkh19960317@163.com")
+    call append(2, "# Email: theck17@163.com")
     call append(3, "# DateTime:".strftime("%Y-%m-%d %H:%M:%S")) 
     call append(4, "# Description: ") 
     call append(5, "") 
@@ -418,6 +351,99 @@ if &filetype == 'python'
     call append(12, "	pass") 
     call append(13, "") 
 endif
+" C
+if &filetype == 'c'
+    call setline(1,"/**") 
+    call append(line("."), " *   Copyright (C) ".strftime("%Y")." All rights reserved.")
+    call append(line(".")+1, " *") 
+    call append(line(".")+2, " *   FileName      ：".expand("%:t")) 
+    call append(line(".")+3, " *   Author        ：C.K")
+    call append(line(".")+4, " *   Email         ：theck17@163.com")
+    call append(line(".")+5, " *   DateTime      ：".strftime("%Y-%m-%d %H:%M:%S")) 
+    call append(line(".")+6, " *   Description   ：") 
+    call append(line(".")+7, " */") 
+    call append(line(".")+8, "#include <math.h>         //数学函数") 
+    call append(line(".")+9, "#include <ctype.h>        //字符函数") 
+    call append(line(".")+10, "#include <string.h>      //字符串函数") 
+    call append(line(".")+11, "#include <stdio.h>       //输入输出函数 ") 
+    call append(line(".")+12, "#include <stdlib.h>      //动态分配函数和随机函数 ") 
+    call append(line(".")+13, "") 
+    call append(line(".")+14, "") 
+    call append(line(".")+15, "") 
+    call append(line(".")+16, "") 
+    call append(line(".")+17, "") 
+    call append(line(".")+18, "int main(){") 
+    call append(line(".")+19, "    return 0;") 
+    call append(line(".")+20, "}") 
+endi
+" 对于Cpp文件 
+if &filetype == 'cpp'
+    call setline(1,"/**") 
+    call append(line("."), " *   Copyright (C) ".strftime("%Y")." All rights reserved.")
+    call append(line(".")+1, " *") 
+    call append(line(".")+2, " *   FileName      ：".expand("%:t")) 
+    call append(line(".")+3, " *   Author        ：C.K")
+    call append(line(".")+4, " *   Email         ：theck17@163.com")
+    call append(line(".")+5, " *   DateTime      ：".strftime("%Y-%m-%d %H:%M:%S")) 
+    call append(line(".")+6, " *   Description   ：") 
+    call append(line(".")+7, " */") 
+    call append(line(".")+8, "#include <algorithm>        //STL 通用算法") 
+    call append(line(".")+9, "#include <bitset>           //STL 位集容器") 
+    call append(line(".")+10, "#include <cctype>          //字符处理") 
+    call append(line(".")+11, "#include <cerrno>          //定义错误码 ") 
+    call append(line(".")+12, "#include <cfloat>          //浮点数处理 ") 
+    call append(line(".")+13, "#include <ciso646>         //对应各种运算符的宏") 
+    call append(line(".")+14, "#include <climits>         //定义各种数据类型最值的常量") 
+    call append(line(".")+15, "#include <clocale>         //定义本地化函数") 
+    call append(line(".")+16, "#include <cmath>           //定义数学函数 ") 
+    call append(line(".")+17, "#include <complex>         //复数类 ") 
+    call append(line(".")+18, "#include <csignal>         //信号机制支持 ") 
+    call append(line(".")+19, "#include <csetjmp>         //异常处理支持 ") 
+    call append(line(".")+20, "#include <cstdarg>         //不定参数列表支持") 
+    call append(line(".")+21, "#include <cstddef>         //常用常量") 
+    call append(line(".")+22, "#include <cstdio>          //定义输入／输出函数") 
+    call append(line(".")+23, "#include <cstdlib>         //定义杂项函数及内存分配函数") 
+    call append(line(".")+24, "#include <cstring>         //字符串处理") 
+    call append(line(".")+25, "#include <cwchar>          //宽字符处理及输入／输出") 
+    call append(line(".")+26, "#include <cwctype>         //宽字符分类") 
+    call append(line(".")+27, "#include <deque>           //STL 双端队列容器") 
+    call append(line(".")+28, "#include <exception>       //异常处理类") 
+    call append(line(".")+29, "#include <fstream>         //文件输入／输出") 
+    call append(line(".")+30, "#include <functional>      //STL 定义运算函数（代替运算符）") 
+    call append(line(".")+31, "#include <limits>          //定义各种数据类型最值常量") 
+    call append(line(".")+32, "#include <list>            //STL 线性列表容器") 
+    call append(line(".")+33, "#include <map>             //STL 映射容器") 
+    call append(line(".")+34, "#include <locale>          //本地化特定信息") 
+    call append(line(".")+35, "#include <memory>          //STL通过分配器进行的内存分配") 
+    call append(line(".")+36, "#include <new>             //动态内存分配") 
+    call append(line(".")+37, "#include <numeric>         //STL常用的数字操作") 
+    call append(line(".")+38, "#include <iostream>        //数据流输入／输出") 
+    call append(line(".")+39, "#include <istream>         //基本输入流") 
+    call append(line(".")+40, "#include <iterator>        //STL迭代器") 
+    call append(line(".")+41, "#include <ostream>         //基本输出流") 
+    call append(line(".")+42, "#include <queue>           //STL 队列容器") 
+    call append(line(".")+43, "#include <set>             //STL 集合容器") 
+    call append(line(".")+44, "#include <sstream>         //基于字符串的流") 
+    call append(line(".")+45, "#include <stack>           //STL 堆栈容器") 
+    call append(line(".")+46, "#include <stdexcept>       //标准异常类") 
+    call append(line(".")+47, "#include <streambuf>       //底层输入／输出支持") 
+    call append(line(".")+48, "#include <string>          //字符串类") 
+    call append(line(".")+49, "#include <vector>          //STL 动态数组容器") 
+    call append(line(".")+50, "#include <valarray>        //对包含值的数组的操作") 
+    call append(line(".")+51, "#include <ctime>           //定义关于时间的函数") 
+    call append(line(".")+52, "using namespace std;") 
+    call append(line(".")+53, "") 
+    call append(line(".")+54, "") 
+    call append(line(".")+55, "") 
+    call append(line(".")+56, "") 
+    call append(line(".")+57, "") 
+    call append(line(".")+58, "") 
+    call append(line(".")+59, "int main(){") 
+    call append(line(".")+60, "    return 0;") 
+    call append(line(".")+61, "}") 
+endif
+
+
 endfunc
 "自动将光标定位到末尾"
 autocmd BufNewFile * normal G
@@ -483,7 +509,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete 自动补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
 Plug 'wellle/tmux-complete.vim'
 " Plug 'Valloric/YouCompleteMe'
@@ -558,12 +584,12 @@ Plug 'SirVer/ultisnips'
 " Plug 'arzg/vim-swift'
 
 " markdown
-"Plug 'iamcco/mathjax-support-for-mkdp'
-"Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-"Plug 'dkarter/bullets.vim'
+Plug 'dkarter/bullets.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 "Plug 'vimwiki/vimwiki'
 
@@ -782,60 +808,59 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " === coc.nvim
 " ===
 " let g:coc_global_extensions = [
-"	\ 'coc-css',
-"	\ 'coc-diagnostic',
-"	\ 'coc-explorer',
-"	\ 'coc-flutter-tools',
-"	\ 'coc-gitignore',
-"	\ 'coc-html',
-"	\ 'coc-json',
-"	\ 'coc-lists',
-"	\ 'coc-prettier',
-"	\ 'coc-pyright',
-"	\ 'coc-python',
-"	\ 'coc-snippets',
-"	\ 'coc-sourcekit',
-"	\ 'coc-stylelint',
-"	\ 'coc-syntax',
-"	\ 'coc-tasks',
-"	\ 'coc-translator',
-"	\ 'coc-tslint-plugin',
-"	\ 'coc-tsserver',
-"	\ 'coc-vetur',
-"	\ 'coc-vimlsp',
-"	\ 'coc-yaml',
-"	\ 'coc-yank']
+ " \ 'coc-css',
+ " \ 'coc-diagnostic',
+ " \ 'coc-explorer',
+ " \ 'coc-flutter-tools',
+ " \ 'coc-gitignore',
+ " \ 'coc-html',
+ " \ 'coc-json',
+ " \ 'coc-lists',
+ " \ 'coc-prettier',
+ " \ 'coc-pyright',
+ " \ 'coc-python',
+ " \ 'coc-snippets',
+ " \ 'coc-sourcekit',
+ " \ 'coc-stylelint',
+ " \ 'coc-syntax',
+ " \ 'coc-tasks',
+ " \ 'coc-translator',
+ " \ 'coc-tslint-plugin',
+ " \ 'coc-tsserver',
+ " \ 'coc-vetur',
+ " \ 'coc-vimlsp',
+ " \ 'coc-yaml',
+ " \ 'coc-yank']
 " inoremap <silent><expr> <TAB>
-"	\ pumvisible() ? "\<C-n>" :
-"	\ <SID>check_back_space() ? "\<TAB>" :
-"	\ coc#refresh()
+ " \ pumvisible() ? "\<C-n>" :
+ " \ <SID>check_back_space() ? "\<TAB>" :
+ " \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 " function! s:check_back_space() abort
-"	let col = col('.') - 1
-"	return !col || getline('.')[col - 1]  =~# '\s'
+ " let col = col('.') - 1
+ " return !col || getline('.')[col - 1]  =~# '\s'
 " endfunction
 " inoremap <silent><expr> <c-space> coc#refresh()
 " inoremap <silent><expr> <c-o> coc#refresh()
 " function! Show_documentation()
-"	call CocActionAsync('highlight')
-"	if (index(['vim','help'], &filetype) >= 0)
-"		execute 'h '.expand('<cword>')
-"	else
-"		call CocAction('doHover')
-" 	endif
+ " call CocActionAsync('highlight')
+ " if (index(['vim','help'], &filetype) >= 0)
+ 	" execute 'h '.expand('<cword>')
+ " else
+ 	" call CocAction('doHover')
+	" endif
 " endfunction
 " nnoremap <LEADER>h :call Show_documentation()<CR>
 " set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
 " let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
 " let $NVIM_COC_LOG_LEVEL = 'debug'
 " let $NVIM_COC_LOG_FILE = '~/.config/nvim/log.txt'
-
 " nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
 " nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 " nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 " nnoremap <c-c> :CocCommand<CR>
-" Text Objects
+" " Text Objects
 " xmap kf <Plug>(coc-funcobj-i)
 " xmap af <Plug>(coc-funcobj-a)
 " omap kf <Plug>(coc-funcobj-i)
@@ -844,7 +869,7 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " omap kc <Plug>(coc-classobj-i)
 " xmap ac <Plug>(coc-classobj-a)
 " omap ac <Plug>(coc-classobj-a)
-" Useful commands
+" " Useful commands
 " nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 " nmap <silent> gd <Plug>(coc-definition)
 " nmap <silent> gy <Plug>(coc-type-definition)
@@ -852,29 +877,29 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " nmap <silent> gr <Plug>(coc-references)
 " nmap <leader>rn <Plug>(coc-rename)
 " nmap tt :CocCommand explorer<CR>
-" coc-translator
+" " coc-translator
 " nmap ts <Plug>(coc-translator-p)
-" Remap for do codeAction of selected region
+" " Remap for do codeAction of selected region
 " function! s:cocActionsOpenFromSelected(type) abort
-"   execute 'CocCommand actions.open ' . a:type
+  " execute 'CocCommand actions.open ' . a:type
 " endfunction
 " xmap <leader>a  <Plug>(coc-codeaction-selected)
 " nmap <leader>aw  <Plug>(coc-codeaction-selected)w
-" coctodolist
+" " coctodolist
 " nnoremap <leader>tn :CocCommand todolist.create<CR>
 " nnoremap <leader>tl :CocList todolist<CR>
 " nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
-" coc-tasks
+" " coc-tasks
 " noremap <silent> <leader>ts :CocList tasks<CR>
-" coc-snippets
+" " coc-snippets
 " imap <C-l> <Plug>(coc-snippets-expand)
 " vmap <C-e> <Plug>(coc-snippets-select)
 " let g:coc_snippet_next = '<c-e>'
 " let g:coc_snippet_prev = '<c-n>'
 " imap <C-e> <Plug>(coc-snippets-expand-jump)
-" let g:snips_author = 'David Chen'
+" let g:snips_author = 'ck'
 " autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
-
+" 
 
 
 
