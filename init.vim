@@ -42,7 +42,9 @@ source ~/.config/nvim/_machine_specific.vim
 let &t_ut=''
 set autochdir
 syntax on                   " 语法高亮
-
+" 设置为双字宽显示，否则无法完整显示如:☆
+set ambiwidth=double
+set t_ut= " 防止vim背景颜色错误
 " ===
 " === Editor behavior
 " ===
@@ -127,7 +129,7 @@ set guioptions-=r               "隐藏右侧滚动条"
 set guioptions-=L               "隐藏左侧滚动条"
 set guioptions-=b               "隐藏底部滚动条"
 set langmenu=zh_CN.UTF-8        "显示中文菜单
-" set fileformat=unix             "设置以unix的格式保存文件:
+set fileformat=unix             "设置以unix的格式保存文件:
 set cindent                     "设置C样式的缩进格式"
 set backspace+=indent,eol,start "set backspace&可以对其重置
 set showmatch                   "显示匹配的括号"
@@ -145,7 +147,6 @@ set autoread
 set mouse=a
 set encoding=utf-8
 
-let &t_ut=''
 set expandtab
 set backspace=indent,eol,start
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -531,24 +532,27 @@ Plug 'vim-airline/vim-airline-themes'
 
 " File navigation 文件目录
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'junegunn/fzf.vim'
 " Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'kevinhwang91/rnvimr'
 " Plug 'airblade/vim-rooter'
 " Plug 'pechorin/any-jump.vim'
 
-" Taglist 标签
+" Taglist
 " Plug 'liuchengxu/vista.vim'
-" Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+" Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }  " show function
+Plug 'majutsushi/tagbar'   " show function
+
 
 " Debugger 多语言图形调试器
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete 自动补全
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
-Plug 'wellle/tmux-complete.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'wellle/tmux-complete.vim'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'davidhalter/jedi-vim'
 
@@ -600,6 +604,11 @@ Plug 'SirVer/ultisnips'
 " Plug 'leafgarland/typescript-vim'
 " Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'mattn/emmet-vim'
+"
+
+" C/C++
+Plug 'octol/vim-cpp-enhanced-highlight' " C++ highlight
+
 
 " Go
 " Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -680,7 +689,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 " Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
-" Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'  " 嵌套括号高亮
 " Plug 'mg979/vim-xtabline'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'wincent/terminus'
@@ -693,7 +702,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 " Other useful utilities
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'ntpeters/vim-better-whitespace', { 'on': ['EnableWhitespace', 'ToggleWhitespace'] } "displays trailing whitespace (after :EnableWhitespace, vim slows down)
-" Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line 注释
 
 
 " Dependencies
@@ -761,7 +770,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_theme = ''  " 主题
+let g:airline_theme = 'nord-minimal'  " 主题
 let g:airline#extensions#keymap#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_idx_format = {
@@ -877,6 +886,49 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " let g:instant_markdown_browser = "chrome --new-window"
 " let g:instant_markdown_autoscroll = 
 
+
+
+" ==
+" == comment 注释
+" ==
+" comments: <leader> cc
+" cancel: <leader> cu
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" ==
+" == tagbar: show function in file
+" ==
+let g:tagbar_width=30
+" open / close tagbar
+" nnoremap <silent> <F4> :TagbarToggle<CR>
+nmap <F4> :TagbarToggle<CR>
+
+
 " ==
 " == GitGutter
 " ==
@@ -899,30 +951,140 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " ===
 " === coc.nvim
 " ===
-" let g:coc_global_extensions = [
- " \ 'coc-css',
- " \ 'coc-diagnostic',
- " \ 'coc-explorer',
- " \ 'coc-flutter-tools',
- " \ 'coc-gitignore',
- " \ 'coc-html',
- " \ 'coc-json',
- " \ 'coc-lists',
- " \ 'coc-prettier',
- " \ 'coc-pyright',
- " \ 'coc-python',
- " \ 'coc-snippets',
- " \ 'coc-sourcekit',
- " \ 'coc-stylelint',
- " \ 'coc-syntax',
- " \ 'coc-tasks',
- " \ 'coc-translator',
- " \ 'coc-tslint-plugin',
- " \ 'coc-tsserver',
- " \ 'coc-vetur',
- " \ 'coc-vimlsp',
- " \ 'coc-yaml',
- " \ 'coc-yank']
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+ 
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+ 
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+ 
+" always show signcolumns
+set signcolumn=yes
+ 
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+ 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+ 
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+ 
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+ 
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+ 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+ 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+ 
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+ 
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+ 
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+ 
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+ 
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+ 
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+ 
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+ 
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+ 
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+ 
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+let g:coc_global_extensions = [
+ \ 'coc-css',
+ \ 'coc-clangd',
+ \ 'coc-cmake',
+ \ 'coc-emmet',
+ \ 'coc-git',
+ \ 'coc-highlight',
+ \ 'coc-jedi',
+ \ 'coc-sh',
+ \ 'coc-vimlsp',
+ \ 'coc-clangd',
+ \ 'coc-syntax',
+ \ 'coc-pairs',
+ \ 'coc-diagnostic',
+ \ 'coc-explorer',
+ \ 'coc-flutter-tools',
+ \ 'coc-gitignore',
+ \ 'coc-html',
+ \ 'coc-json',
+ \ 'coc-lists',
+ \ 'coc-prettier',
+ \ 'coc-pyright',
+ \ 'coc-python',
+ \ 'coc-snippets',
+ \ 'coc-sourcekit',
+ \ 'coc-stylelint',
+ \ 'coc-syntax',
+ \ 'coc-tasks',
+ \ 'coc-translator',
+ \ 'coc-tslint-plugin',
+ \ 'coc-tsserver',
+ \ 'coc-vetur',
+ \ 'coc-vimlsp',
+ \ 'coc-yaml',
+ \ 'coc-yank']
 " inoremap <silent><expr> <TAB>
  " \ pumvisible() ? "\<C-n>" :
  " \ <SID>check_back_space() ? "\<TAB>" :
@@ -1423,9 +1585,32 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 
 
 " ===
-" === rainbow
+" === rainbow 嵌套括号高亮
 " ===
-" let g:rainbow_active = 1
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\   'guifgs': ['darkorange3', 'seagreen3', 'royalblue3', 'firebrick'],
+\   'ctermfgs': ['lightyellow', 'lightcyan','lightblue', 'lightmagenta'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'tex': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\       },
+\       'lisp': {
+\           'guifgs': ['darkorange3', 'seagreen3', 'royalblue3', 'firebrick'],
+\       },
+\       'vim': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\       },
+\       'html': {
+\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\       },
+\       'css': 0,
+\   }
+\}
+
 
 
 " ===
@@ -1646,6 +1831,25 @@ imap <silent> <C-F8> <Plug>StopMarkdownPreview    " 插入模式
 " let NERDTreeMapPreview = ""
 " let NERDTreeMapCloseDir = "n"
 " let NERDTreeMapChangeRoot = "y"
+" autocmd vimenter * NERDTree  "自动开启Nerdtree
+let g:NERDTreeWinSize = 25 "设定 NERDTree 视窗大小
+let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
+"打开vim时如果没有文件自动打开NERDTree
+" autocmd vimenter * if !argc()|NERDTree|endif
+"当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" 设置树的显示图标
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
+let g:NERDTreeShowLineNumbers=0 " 是否显示行号
+let g:NERDTreeHidden=0     "不显示隐藏文件
+""Making it prettier
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+" open/close nerdtree
+nnoremap <F3> :NERDTreeToggle<CR>
+
 
 " ==
 " == NERDTree-git

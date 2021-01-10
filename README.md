@@ -21,13 +21,24 @@
 
 * For Taglist: Install ctags for function/class/variable list
 ```bash
-# 使用 Homebrew 安装 ctags:
+# 方法一：使用 Homebrew 安装 ctags:
 brew install ctags
 # 替换默认 ctags
 $ echo 'alias ctags="`brew --prefix`/bin/ctags"' >> $HOME/.zshrc
 $ exec $SHELL
 # bash 用户加入 $HOME/.bashrc，测试：
 $ ctags -R --exclude=.git --exclude=log *
+
+# 方法二：使用 wget 安装 ctags
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+tar -zxvf ctags-5.8.tar.gz
+cd ctags-5.8
+./configure --prefix=$PATH # $PATH是你要安装的位置
+make -j
+make install
+# 然后把安装目录里的bin所在的路径加到~/.bashrc中，在source一下，输入命令ctags，如果输出
+ctags: No files specified. Try "ctags --help". 
+#那ctags就安装成功了。
 ```
 * For FZF: Install fzf
 ```bash
