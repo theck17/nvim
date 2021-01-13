@@ -524,7 +524,7 @@ Plug 'crusoexia/vim-monokai'
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-theme'
 
 " General Highlighter 用于异步显示文件中的颜色
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -547,7 +547,7 @@ Plug 'majutsushi/tagbar'   " show function
 
 
 " Debugger 多语言图形调试器
-" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete 自动补全
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
@@ -614,12 +614,12 @@ Plug 'octol/vim-cpp-enhanced-highlight' " C++ highlight
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 
 " Python
-" Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
-" Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-" Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
-" Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
-" Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
+Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter  提供文件类型检测，语法突出显示和缩进
 " Plug 'dart-lang/dart-vim-plugin'
@@ -1875,8 +1875,8 @@ nnoremap <F3> :NERDTreeToggle<CR>
 " ===
 " === Python-syntax
 " ===
-" let g:python_highlight_all = 1
-" let g:python_slow_sync = 0
+let g:python_highlight_all = 1
+let g:python_slow_sync = 0
 
 " ===
 " === vim-indent-guide
