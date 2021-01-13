@@ -121,3 +121,20 @@ sudo apt-get xclip
 ```bash
 sudo npm -g install instant-markdown-d
 ```
+
+ * Install ccl
+ ```bash
+# ccls 的编译需要 cmake 和 llvm ，所以在编译之前需要安装 cmake 和 llvm 。
+brew install cmake llvm
+
+# 使用 brew 安装的 llvm 路径在 /usr/local/Cellar/llvm/10.0.1 ，编译 ccls 会用到。
+# 编译ccls
+git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+cd ccls
+cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/local/Cellar/llvm/10.0.1/lib/cmake -DUSE_SYSTEM_RAPIDJSON=off
+cmake --build Release --target install
+
+# ccls 会被安装到 /usr/local/bin/ccls 。
+# 其中 -DCMAKE_PREFIX_PATH 需要换成你的 llvm 的安装路径
+# 这样 ccls 就编译好了。
+ ```
