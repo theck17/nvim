@@ -524,7 +524,7 @@ Plug 'crusoexia/vim-monokai'
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-theme'
+Plug 'vim-airline/vim-airline-themes'
 
 " General Highlighter 用于异步显示文件中的颜色
 " Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
