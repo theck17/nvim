@@ -766,11 +766,6 @@ colo monokai
 " === airline 状态栏
 " ===
 " 设置状态栏
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_theme = 'nord-minimal'  " 主题
 let g:airline#extensions#keymap#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_idx_format = {
@@ -786,21 +781,21 @@ let g:airline#extensions#tabline#buffer_idx_format = {
        \ '9': '9 '
        \}
 " 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-" 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
-nmap <leader>- <Plug>AirlineSelectPrevTab
-" 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
-nmap <leader>+ <Plug>AirlineSelectNextTab
-" 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
-nmap <leader>q :bp<cr>:bd #<cr>
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
+" " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
+" nmap <leader>- <Plug>AirlineSelectPrevTab
+" " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
+" nmap <leader>+ <Plug>AirlineSelectNextTab
+" " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
+" nmap <leader>q :bp<cr>:bd #<cr>
 " 修改了一些个人不喜欢的字符
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -811,34 +806,36 @@ let g:airline_symbols.maxlinenr = 'Ml' "maxline
 let g:airline_symbols.branch = 'BR'
 let g:airline_symbols.readonly = "RO"
 let g:airline_symbols.dirty = "DT"
-let g:airline_symbols.crypt = "CR" 
+let g:airline_symbols.crypt = "CR"
 " 
-" set t_Co=256
-" set laststatus=2
-" " 是否使用powerline打过补丁的字体
-" let g:airline_powerline_fonts = 0
-" " 开启tabline
-" let g:airline#extensions#tabline#enabled = 1
-" " tabline中当前buffer两端的分隔字符
-" let g:airline#extensions#tabline#left_sep = ' '
-" " tabline中未激活buffer两端的分隔字符
-" let g:airline#extensions#tabline#left_alt_sep = ' '
-" " tabline中buffer显示编号
-" let g:airline#extensions#tabline#buffer_nr_show = 1
-" " 映射切换buffer的键位
-" nnoremap [b :bp<CR>
-" nnoremap ]b :bn<CR>
-" " 映射<leader>num到num buffer
-" map <leader>1 :b 1<CR>
-" map <leader>2 :b 2<CR>
-" map <leader>3 :b 3<CR>
-" map <leader>4 :b 4<CR>
-" map <leader>5 :b 5<CR>
-" map <leader>6 :b 6<CR>
-" map <leader>7 :b 7<CR>
-" map <leader>8 :b 8<CR>
-" map <leader>9 :b 9<CR>
-" 
+set t_Co=256
+set laststatus=2
+" 是否使用powerline打过补丁的字体
+let g:airline_powerline_fonts = 0
+" 开启tabline
+let g:airline#extensions#tabline#enabled = 1
+" tabline中当前buffer两端的分隔字符
+let g:airline#extensions#tabline#left_sep = '|'
+" tabline中未激活buffer两端的分隔字符
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:airline#extensions#tabline#formatter = 'default'
+" 映射切换buffer的键位
+nnoremap [b :bp<CR>
+nnoremap ]b :bn<CR>
+" 映射<leader>num到num buffer
+map <leader>1 :b 1<CR>
+map <leader>2 :b 2<CR>
+map <leader>3 :b 3<CR>
+map <leader>4 :b 4<CR>
+map <leader>5 :b 5<CR>
+map <leader>6 :b 6<CR>
+map <leader>7 :b 7<CR>
+map <leader>8 :b 8<CR>
+map <leader>9 :b 9<CR>
+
 " let g:airline_theme='<theme>' " <theme> 代表某个主题的名称
 
 
