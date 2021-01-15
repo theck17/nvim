@@ -579,7 +579,7 @@ Plug 'SirVer/ultisnips'
 " Plug 'google/vim-codefmt'
 
 " Tex 适用于LaTeX文件
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 " CSharp 为C＃提供类似IDE的功能
 " Plug 'OmniSharp/omnisharp-vim'
@@ -712,7 +712,7 @@ Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line 注释
 " Plug 'fadein/vim-FIGlet'
 
 " Error checking 异常检查
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Other visual enhancement
 Plug 'Yggdroot/indentLine'  " 缩进
