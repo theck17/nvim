@@ -509,7 +509,7 @@ Plug 'crusoexia/vim-monokai'
 " Pretty Dress vim语法高亮显示
 " neovim
 " Plug 'bpietravalle/vim-bolt'
-" Plug 'theniceboy/nvim-deus'
+Plug 'theniceboy/nvim-deus'
 " Plug 'arzg/vim-colors-xcode'
 " macvim
 " Plug 'connorholyday/vim-snazzy'
