@@ -41,7 +41,7 @@ source ~/.config/nvim/_machine_specific.vim
 "set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
-syntax on                   " 语法高亮
+" syntax on                   " 语法高亮
 " 设置为双字宽显示，否则无法完整显示如:☆
 set ambiwidth=double
 set t_ut= " 防止vim背景颜色错误
