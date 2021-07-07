@@ -405,12 +405,9 @@ if &filetype == 'c'
     call append(line(".")+12, "#include <stdlib.h>      //动态分配函数和随机函数 ") 
     call append(line(".")+13, "") 
     call append(line(".")+14, "") 
-    call append(line(".")+15, "") 
-    call append(line(".")+16, "") 
-    call append(line(".")+17, "") 
-    call append(line(".")+18, "int main(){") 
-    call append(line(".")+19, "    return 0;") 
-    call append(line(".")+20, "}") 
+    call append(line(".")+15, "int main(){") 
+    call append(line(".")+16, "    return 0;") 
+    call append(line(".")+17, "}") 
 endi
 " 对于Cpp文件 
 if &filetype == 'cpp'
@@ -470,13 +467,9 @@ if &filetype == 'cpp'
     call append(line(".")+52, "using namespace std;") 
     call append(line(".")+53, "") 
     call append(line(".")+54, "") 
-    call append(line(".")+55, "") 
-    call append(line(".")+56, "") 
-    call append(line(".")+57, "") 
-    call append(line(".")+58, "") 
-    call append(line(".")+59, "int main(){") 
-    call append(line(".")+60, "    return 0;") 
-    call append(line(".")+61, "}") 
+    call append(line(".")+55, "int main(){") 
+    call append(line(".")+56, "    return 0;") 
+    call append(line(".")+57, "}") 
 endif
 
 
@@ -1394,6 +1387,24 @@ let g:coc_global_extensions = [
 " ===
 " === vimtex
 " ===
+let g:tex_flavor = 'latex'
+" 将编译报错自动弹出错误窗口（quickfix window）设置为 0（即不自动弹出）使用命令 :copen 来手动打开错误窗口
+let g:vimtex_quickfix_mode = 0
+"使用 Zathura 阅读器
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
+" 这一项目默认即为 nvr，但是如果由于种种原因无法实现 SyncTeX 同步位置，可以考虑手动指定这一项目
+let g:vimtex_compiler_progname = 'nvr'
+" 文章目录 TOC
+let g:vimtex_toc_config = {
+\ 'name' : 'TOC',
+\ 'layers' : ['content', 'todo', 'include'],
+\ 'split_width' : 25,
+\ 'todo_sorted' : 0,
+\ 'show_help' : 1,
+\ 'show_numbers' : 1,
+\}
+
 " let g:vimtex_view_method = ''
 " let g:vimtex_view_general_viewer = 'llpp'
 " let g:vimtex_mappings_enabled = 0
