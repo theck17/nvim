@@ -379,13 +379,9 @@ if &filetype == 'python'
     call append(4, "# Description: ") 
     call append(5, "") 
     call append(6, "") 
-    call append(7, "") 
-    call append(8, "") 
+    call append(7, "if __name__ == \"__main__\":") 
+    call append(8, "   pass") 
     call append(9, "") 
-    call append(10, "") 
-    call append(11, "if __name__ == \"__main__\":") 
-    call append(12, "   pass") 
-    call append(13, "") 
 endif
 " C
 if &filetype == 'c'
