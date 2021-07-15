@@ -48,6 +48,8 @@ set t_ut= " 防止vim背景颜色错误
 " ===
 " === Editor behavior
 " ===
+let &termencoding=&encoding     " 显示中文
+set fileencodings=utf-8,gbk     " 显示中文
 set exrc
 set autoread                    " 设置当文件被改动时自动载入
 set completeopt=preview,menu    " 代码补全
